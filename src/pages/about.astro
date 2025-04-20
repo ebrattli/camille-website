@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import StorySection from '../components/StorySection.astro';
+import MissionValues from '../components/MissionValues.astro';
+import ValueCard from '../components/ValueCard.astro';
+import FounderProfile from '../components/FounderProfile.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+// Define core values
+const coreValues = [
+  {
+    title: "Authenticity",
+    description: "I believe in honest communication and transparent practices that build trust with my clients and their audiences."
+  },
+  {
+    title: "Innovation",
+    description: "I stay ahead of digital trends to provide cutting-edge strategies that give my clients a competitive edge."
+  },
+  {
+    title: "Results-Driven",
+    description: "I focus on measurable outcomes and ROI, not just vanity metrics."
+  }
+];
+
+// Define approach values
+const approachValues = [
+  {
+    title: "Personalized Strategy",
+    description: "I create custom solutions tailored to each client's unique goals, audience, and industry."
+  },
+  {
+    title: "Data-Informed",
+    description: "I use analytics and research to guide my decisions and optimize campaigns."
+  },
+  {
+    title: "Collaborative Partnership",
+    description: "I work closely with my clients, treating their business as my own."
+  }
+];
+---
+
+<Layout
+  title="About Me | Camille's Digital Marketing"
+  description="Learn more about Camille's Digital Marketing, my mission, values, and the story behind my business."
+>
+  <div class="space-y-16">
+    <PageHero
+      title="About Me"
+      subtitle="Get to know the story, mission, and person behind Camille's Digital Marketing"
+    />
+
+    <StorySection
+      title="My Story"
+      imagePlaceholder={{
+        icon: "mdi:image",
+        text: "Professional photo of Camille will be placed here"
+      }}
+    >
+      <p>
+        Camille's Digital Marketing was founded in 2020 with a simple mission: to help small and medium-sized businesses thrive in the digital landscape.
+      </p>
+      <p class="mt-4">
+        After spending years in corporate marketing roles, I noticed that many smaller businesses struggled to access quality digital marketing services that were both effective and affordable. I decided to bridge this gap by creating a boutique agency that combines enterprise-level expertise with personalized service.
+      </p>
+      <p class="mt-4">
+        Since then, I've helped dozens of businesses across various industries establish their online presence, reach their target audiences, and achieve measurable growth through strategic digital marketing solutions.
+      </p>
+    </StorySection>
+
+    <MissionValues
+      title="My Mission & Values"
+      missionStatement="My mission is to empower businesses with strategic digital marketing solutions that drive real results. I believe in creating authentic connections between brands and their audiences through thoughtful, data-driven strategies that prioritize long-term growth over quick fixes."
+      coreValues={coreValues}
+      approachValues={approachValues}
+    />
+
+    <FounderProfile
+      title="Meet the Founder"
+      name="Camille Nicole Brattli"
+      role="Founder & Digital Marketing Strategist"
+    >
+      With over 10 years of experience in digital marketing, I specialize in creating comprehensive strategies that align with business goals. My expertise spans social media marketing, content creation, and digital advertising. I'm passionate about helping small and medium-sized businesses establish their online presence and achieve measurable growth through strategic digital marketing solutions.
+    </FounderProfile>
+
+    <CallToAction
+      title="Ready to Work With Me?"
+      buttonText="Contact Me Today"
+      buttonLink="/contact"
+    >
+      I'm passionate about helping businesses like yours succeed in the digital world. Let's start a conversation about how I can help you reach your goals.
+    </CallToAction>
+  </div>
+</Layout>

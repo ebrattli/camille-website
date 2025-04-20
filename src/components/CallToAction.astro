@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  buttonText: string;
+  buttonLink: string;
+}
+
+const { title, buttonText, buttonLink } = Astro.props;
+---
+
+<div class="hero max-w-3xl mx-auto">
+  <div class="hero-content text-center">
+    <div>
+      <h2 class="text-2xl font-bold text-base-content">{title}</h2>
+      <p class="py-6 text-gray-700">
+        <slot />
+      </p>
+      <a href={buttonLink} class="btn btn-primary">{buttonText}</a>
+    </div>
+  </div>
+</div>

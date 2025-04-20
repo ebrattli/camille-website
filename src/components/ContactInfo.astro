@@ -1,0 +1,61 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface ContactItem {
+  icon: string;
+  title: string;
+  content: string | string[];
+  link?: string;
+  linkText?: string;
+}
+
+interface Props {
+  items: ContactItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {items.map((item) => (
+    <div class="bg-base-100 rounded-lg shadow-md p-6 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+      <!-- Icon -->
+      <div class="flex justify-center mb-4">
+        <div class="bg-primary/10 p-4 rounded-full text-primary">
+          <Icon name={item.icon} class="w-8 h-8" />
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="text-center mb-3">
+        <h3 class="font-bold text-lg">{item.title}</h3>
+      </div>
+
+      <!-- Content -->
+      <div class="text-center text-base-content/80 mb-4">
+        {Array.isArray(item.content) ? (
+          <div class="space-y-2">
+            {item.content.map((line) => (
+              <p class="leading-relaxed">{line}</p>
+            ))}
+          </div>
+        ) : (
+          <p class="leading-relaxed">{item.content}</p>
+        )}
+      </div>
+
+      <!-- Link (if available) -->
+      {item.link && (
+        <div class="text-center mt-2">
+          <a
+            href={item.link}
+            class="text-primary hover:underline font-medium inline-flex items-center justify-center gap-1 break-words"
+          >
+            <span class="break-all overflow-hidden">{item.linkText || item.link}</span>
+            <Icon name="mdi:arrow-right" class="w-4 h-4 flex-shrink-0" />
+          </a>
+        </div>
+      )}
+    </div>
+  ))}
+</div>

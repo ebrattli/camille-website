@@ -1,0 +1,44 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  address: string;
+  mapUrl: string;
+  title?: string;
+  height?: string;
+}
+
+const {
+  address,
+  mapUrl,
+  title = "Find Us",
+  height = "400px"
+} = Astro.props;
+---
+
+<div class="contact-map-container">
+  {title && <h3 class="text-xl font-bold mb-4 text-center">{title}</h3>}
+
+  <div class="card bg-base-100 shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+    <div class="aspect-video w-full" style={`height: ${height};`}>
+      <iframe
+        src={mapUrl}
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title={`Map showing ${address}`}
+        class="w-full h-full"
+      ></iframe>
+    </div>
+
+    <div class="card-body p-4">
+      <div class="flex items-center justify-center gap-2">
+        <Icon name="mdi:map-marker" class="w-5 h-5 text-primary" />
+        <p class="text-center font-medium">{address}</p>
+      </div>
+    </div>
+  </div>
+</div>

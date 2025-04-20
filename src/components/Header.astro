@@ -1,0 +1,51 @@
+---
+// Define props interface
+interface Props {
+  siteTitle?: string;
+}
+
+// Get props with default values
+const { siteTitle = "Camille's Business" } = Astro.props;
+
+// Navigation links
+const navItems = [
+  { text: "Home", href: "/" },
+  { text: "Services", href: "/services" },
+  { text: "About", href: "/about" },
+  { text: "Contact", href: "/contact" },
+];
+---
+
+<div class="navbar bg-base-100 shadow-sm flex flex-row items-center justify-between">
+  <div class="navbar-start">
+    <div class="flex-shrink-0">
+      <!-- You can replace this with an actual logo later -->
+      <a href="/" class="text-xl font-bold text-primary">{siteTitle}</a>
+    </div>
+  </div>
+
+  <div class="navbar-center hidden md:block">
+    <ul class="flex space-x-6">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="text-gray-600 hover:text-primary font-medium px-2 py-1"
+          >
+            {item.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="navbar-end">
+    <!-- Call to action button -->
+    <a
+      href="/contact"
+      class="btn btn-primary btn-sm md:btn-md rounded-full px-4 md:px-6 font-medium shadow-md hover:shadow-lg"
+    >
+      Book Now
+    </a>
+  </div>
+</div>

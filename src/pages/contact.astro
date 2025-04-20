@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+import ContactForm from '../components/ContactForm.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import ContactMap from '../components/ContactMap.astro';
+import BackToTop from '../components/BackToTop.astro';
+import { Icon } from 'astro-icon/components';
+
+// Define contact information items
+const contactItems = [
+  {
+    icon: "mdi:email",
+    title: "Email",
+    content: "Let's talk about your project",
+    link: "mailto:camilleyambao220@gmail.com",
+    linkText: "camilleyambao220@gmail.com"
+  },
+  {
+    icon: "mdi:phone",
+    title: "Phone",
+    content: "Call me for a quick chat",
+    link: "tel:+4712345678",
+    linkText: "+47 123 45 678"
+  },
+  {
+    icon: "mdi:map-marker",
+    title: "Location",
+    content: "Based in Oslo, Norway",
+    link: "https://maps.app.goo.gl/JK7mJrP5mLZLWBLx8",
+    linkText: "View on map"
+  },
+  {
+    icon: "mdi:clock",
+    title: "Business Hours",
+    content: [
+      "Monday - Friday: 9:00 - 17:00",
+      "Saturday: By appointment",
+      "Sunday: Closed"
+    ]
+  }
+];
+
+// Define social media links
+const socialLinks = [
+  {
+    platform: "LinkedIn",
+    url: "https://linkedin.com/",
+    icon: "mdi:linkedin",
+    label: "LinkedIn"
+  },
+  {
+    platform: "Instagram",
+    url: "https://instagram.com/",
+    icon: "mdi:instagram",
+    label: "Instagram"
+  },
+  {
+    platform: "Facebook",
+    url: "https://facebook.com/",
+    icon: "mdi:facebook",
+    label: "Facebook"
+  },
+  {
+    platform: "Twitter",
+    url: "https://twitter.com/",
+    icon: "mdi:twitter",
+    label: "Twitter"
+  }
+];
+
+// Define form fields
+const formFields = [
+  {
+    id: "name",
+    label: "Name",
+    type: "text" as const,
+    placeholder: "Your name",
+    required: true
+  },
+  {
+    id: "email",
+    label: "Email",
+    type: "email" as const,
+    placeholder: "Your email address",
+    required: true
+  },
+  {
+    id: "phone",
+    label: "Phone (optional)",
+    type: "tel" as const,
+    placeholder: "Your phone number"
+  },
+  {
+    id: "subject",
+    label: "Subject",
+    type: "select" as const,
+    required: true,
+    options: [
+      { value: "", label: "Select a subject", disabled: true, selected: true },
+      { value: "General Inquiry", label: "General Inquiry" },
+      { value: "Service Question", label: "Service Question" },
+      { value: "Booking Request", label: "Booking Request" },
+      { value: "Pricing Information", label: "Pricing Information" },
+      { value: "Other", label: "Other" }
+    ]
+  },
+  {
+    id: "message",
+    label: "Message",
+    type: "textarea" as const,
+    placeholder: "Your message",
+    required: true
+  },
+  {
+    id: "privacy",
+    label: "I agree to the privacy policy and consent to being contacted regarding my inquiry.",
+    type: "checkbox" as const,
+    required: true
+  }
+];
+
+// Define FAQs
+const faqs = [
+  {
+    question: "How quickly do you respond to inquiries?",
+    answer: "I typically respond to all inquiries within 24-48 business hours. For urgent matters, please indicate this in your message subject."
+  },
+  {
+    question: "Do you offer consultations before signing a contract?",
+    answer: "Yes, I offer a free 30-minute consultation to discuss your needs and determine if we're a good fit to work together."
+  },
+  {
+    question: "What information should I include in my initial inquiry?",
+    answer: "To help me provide the most relevant response, please include details about your business, your goals, your timeline, and your budget range if applicable."
+  },
+  {
+    question: "Can we meet in person or is everything done virtually?",
+    answer: "I'm based in Oslo, Norway and can meet clients in person within the Oslo area. For clients outside Oslo, I offer virtual meetings via Zoom or your preferred platform."
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "I accept bank transfers, credit cards, and Vipps for Norwegian clients. Payment terms and methods will be outlined in our service agreement."
+  }
+];
+---
+
+<Layout
+  title="Contact | Camille's Digital Marketing"
+  description="Get in touch with Camille's Digital Marketing for professional social media and digital marketing services."
+>
+  <div class="space-y-16">
+    <PageHero
+      title="Let's Get in Touch"
+      subtitle="I'd love to hear about your project and how I can help"
+    />
+
+    <!-- Introduction Section -->
+    <section class="max-w-4xl mx-auto text-center px-4 mb-16">
+      <div class="bg-base-100 rounded-lg shadow-md p-8 border-t-4 border-primary">
+        <p class="text-lg leading-relaxed">
+          Whether you're ready to elevate your digital presence or just have questions about my services,
+          I'm here to help. Fill out the form below or use the contact information provided to get in touch.
+        </p>
+        <div class="flex justify-center mt-6">
+          <a href="#contact-form-section" class="btn btn-primary btn-sm">
+            <Icon name="mdi:arrow-down" class="w-4 h-4 mr-1" />
+            Contact Me Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="max-w-4xl mx-auto px-4 mb-16">
+      <h2 class="text-2xl font-bold text-center mb-8">Contact Information</h2>
+      <ContactInfo items={contactItems} />
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="max-w-4xl mx-auto px-4 mb-16">
+      <div class="bg-base-100 rounded-lg shadow-md p-8">
+        <h2 class="text-2xl font-bold text-center mb-6">Connect With Me</h2>
+        <p class="text-center mb-8">Follow me on social media for updates, tips, and more</p>
+        <SocialLinks links={socialLinks} showLabels={true} />
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form-section" class="max-w-6xl mx-auto px-4 mb-16">
+      <div class="space-y-12">
+        <!-- Contact Form - Full Width -->
+        <div class="w-full">
+          <ContactForm
+            title="Send Me a Message"
+            fields={formFields}
+            submitText="Send Message"
+          />
+        </div>
+
+        <!-- Map and Booking - Full Width -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Map - Takes 2/3 of the width on large screens -->
+          <div class="lg:col-span-2">
+            <ContactMap
+              title="Find Me"
+              address="Oslo, Norway"
+              mapUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000.1201468342285!2d10.7389116!3d59.9138688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e80811e2d6f%3A0x471e96bc174d965b!2sOslo%2C%20Norway!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
+            />
+          </div>
+
+          <!-- Booking Card - Takes 1/3 of the width on large screens -->
+          <div class="lg:col-span-1">
+            <div class="bg-base-100 rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full flex flex-col justify-center">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="bg-primary/10 p-3 rounded-full">
+                  <Icon name="mdi:calendar-check" class="w-6 h-6 text-primary" />
+                </div>
+                <h3 class="font-bold text-lg">Book a Consultation</h3>
+              </div>
+              <p class="mb-4">Ready to discuss your project in detail? Schedule a free 30-minute consultation.</p>
+              <a href="#" class="btn btn-primary w-full mt-auto">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 px-4 bg-base-200">
+      <div class="max-w-6xl mx-auto">
+        <FaqAccordion
+          title="Frequently Asked Questions"
+          items={faqs}
+          accordionName="contact-faq"
+        />
+      </div>
+    </section>
+  </div>
+  <BackToTop showAtPixels={500} />
+</Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

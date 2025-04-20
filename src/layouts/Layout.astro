@@ -1,0 +1,43 @@
+---
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  siteTitle?: string;
+}
+
+const {
+  title,
+  description = "Camille's Business - Professional services",
+  siteTitle = "Camille's Business"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="valentine">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-base-200">
+    <Header siteTitle={siteTitle} />
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <slot />
+    </main>
+
+    <footer class="footer footer-center p-6 bg-base-100 text-base-content border-t border-base-300">
+      <aside>
+        <p class="text-primary">
+          &copy; {new Date().getFullYear()} {siteTitle}. All rights reserved.
+        </p>
+      </aside>
+    </footer>
+  </body>
+</html>

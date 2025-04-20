@@ -1,0 +1,32 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FaqItem[];
+  title?: string;
+  accordionName?: string;
+}
+
+const { items, title, accordionName = "faq-accordion" } = Astro.props;
+---
+
+<div class="py-8">
+  {title && <h2 class="text-2xl font-bold text-center mb-6">{title}</h2>}
+
+  <div class="max-w-3xl mx-auto space-y-3">
+    {items.map((item, index) => (
+      <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+        <input type="radio" name={accordionName} checked={index === 0 ? "checked" : undefined} />
+        <div class="collapse-title font-semibold">
+          {item.question}
+        </div>
+        <div class="collapse-content text-sm">
+          <p>{item.answer}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

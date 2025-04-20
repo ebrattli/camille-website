@@ -1,0 +1,178 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface FormField {
+  id: string;
+  label: string;
+  type: 'text' | 'email' | 'tel' | 'select' | 'textarea' | 'checkbox';
+  placeholder?: string;
+  required?: boolean;
+  options?: { value: string; label: string; disabled?: boolean; selected?: boolean }[];
+}
+
+interface Props {
+  title: string;
+  fields: FormField[];
+  submitText: string;
+  formId?: string;
+}
+
+const {
+  title,
+  fields,
+  submitText = "Send Message",
+  formId = "contact-form"
+} = Astro.props;
+
+// Group fields by type to handle them separately
+const regularFields = fields.filter(field => field.type !== 'textarea' && field.type !== 'checkbox');
+const textareaField = fields.find(field => field.type === 'textarea');
+const checkboxFields = fields.filter(field => field.type === 'checkbox');
+---
+
+<div class="card bg-base-100 shadow-md">
+  <div class="card-body p-8">
+    <h2 class="card-title text-2xl mb-8">{title}</h2>
+
+    <form id={formId} class="space-y-8">
+      <!-- Regular fields (text, email, tel, select) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {regularFields.map((field) => (
+          <div class="form-control">
+            <label for={field.id} class="label font-medium">
+              <span class="label-text">{field.label}</span>
+            </label>
+
+            {field.type === 'text' || field.type === 'email' || field.type === 'tel' ? (
+              <input
+                type={field.type}
+                id={field.id}
+                name={field.id}
+                placeholder={field.placeholder}
+                class="input input-bordered w-full"
+                required={field.required}
+              />
+            ) : field.type === 'select' ? (
+              <div class="relative">
+                <select
+                  id={field.id}
+                  name={field.id}
+                  class="select select-bordered w-full"
+                  required={field.required}
+                >
+                  {field.options?.map((option) => (
+                    <option
+                      value={option.value}
+                      disabled={option.disabled}
+                      selected={option.selected}
+                    >
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                  </svg>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        ))}
+      </div>
+
+      <!-- Visual separator -->
+      <div class="border-t border-base-300 mt-6"></div>
+
+      <!-- Message textarea field - separated and prominent -->
+      {textareaField && (
+        <div class="form-control mt-6">
+          <label for={textareaField.id} class="label mb-2">
+            <span class="label-text text-lg font-medium">{textareaField.label}</span>
+          </label>
+          <textarea
+            id={textareaField.id}
+            name={textareaField.id}
+            placeholder={textareaField.placeholder}
+            class="textarea textarea-bordered h-64 w-full text-base rounded-xl border-2 focus:border-primary"
+            required={textareaField.required}
+          ></textarea>
+          <p class="text-xs text-gray-500 mt-2">Feel free to write a detailed message about your needs</p>
+        </div>
+      )}
+
+      <!-- Checkbox fields -->
+      {checkboxFields.map((field) => (
+        <div class="form-control mt-6">
+          <label class="label cursor-pointer justify-start gap-2">
+            <input
+              type="checkbox"
+              id={field.id}
+              name={field.id}
+              class="checkbox checkbox-primary"
+              required={field.required}
+            />
+            <span class="label-text">{field.label}</span>
+          </label>
+        </div>
+      ))}
+
+      <div class="form-control mt-10">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg transition-transform duration-300 hover:scale-105 active:scale-95"
+        >
+          {submitText}
+          <Icon name="mdi:send" class="w-5 h-5 ml-2" />
+        </button>
+      </div>
+    </form>
+
+    <!-- Success/Error Message (hidden by default) -->
+    <div id="form-success" class="alert alert-success mt-6 hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span>Your message has been sent successfully!</span>
+    </div>
+
+    <div id="form-error" class="alert alert-error mt-6 hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span>There was an error sending your message. Please try again.</span>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ formId }}>
+  // Simple form handling script
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById(formId);
+    const successMessage = document.getElementById('form-success');
+    const errorMessage = document.getElementById('form-error');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Hide any existing messages
+        successMessage?.classList.add('hidden');
+        errorMessage?.classList.add('hidden');
+
+        // In a real implementation, you would send the form data to a server
+        // For now, we'll just simulate a successful submission
+        try {
+          // Simulate form submission delay
+          await new Promise(resolve => setTimeout(resolve, 1000));
+
+          // Show success message
+          successMessage?.classList.remove('hidden');
+
+          // Reset form
+          form.reset();
+        } catch (error) {
+          // Show error message
+          errorMessage?.classList.remove('hidden');
+          console.error('Form submission error:', error);
+        }
+      });
+    }
+  });
+</script>
