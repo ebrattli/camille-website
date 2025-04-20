@@ -2,6 +2,8 @@
 
 ## 1. Branding & Design
 - [x] Set up pink color theme (already implemented in tailwind.config.js)
+- [ ] Bobby Jones, helvetica world, Schoolbell.
+- [ ] Colors, white black pink.
 - [ ] Create a professional logo or wordmark for the business
 - [ ] Define typography hierarchy (headings, body text, etc.)
 - [ ] Create a consistent visual style guide
