@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+  client: string;
+  category: string;
+  imageUrl?: string;
+  imagePlaceholder?: {
+    icon: string;
+    text: string;
+  };
+  tags?: string[];
+}
+
+const { title, client, category, imageUrl, imagePlaceholder, tags = [] } = Astro.props;
+
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="card bg-base-100 shadow-xl overflow-hidden h-full">
+  <figure class="relative h-64 bg-base-200">
+    {imageUrl ? (
+      <img src={imageUrl} alt={title} class="w-full h-full object-cover" />
+    ) : (
+      <div class="flex flex-col items-center justify-center w-full h-full text-base-content/50">
+        {imagePlaceholder && (
+          <>
+            <Icon name={imagePlaceholder.icon} class="w-16 h-16 mb-2" />
+            <p class="text-sm">{imagePlaceholder.text}</p>
+          </>
+        )}
+      </div>
+    )}
+  </figure>
+  <div class="card-body">
+    <h3 class="card-title text-xl font-bold">{title}</h3>
+    <div class="flex flex-col gap-1 mb-3">
+      <p class="text-sm text-base-content/70"><span class="font-medium">Client:</span> {client}</p>
+      <p class="text-sm text-base-content/70"><span class="font-medium">Category:</span> {category}</p>
+    </div>
+    <div class="card-content mb-4">
+      <slot />
+    </div>
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mt-auto">
+        {tags.map((tag) => (
+          <span class="badge badge-primary badge-outline">{tag}</span>
+        ))}
+      </div>
+    )}
+    <div class="card-actions justify-end mt-4">
+      <a href={`/portfolio/${title.toLowerCase().replace(/\s+/g, '-')}`} class="btn btn-primary btn-sm">
+        View Details
+      </a>
+    </div>
+  </div>
+</div>

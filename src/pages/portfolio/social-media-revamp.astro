@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaseStudy from '../../components/CaseStudy.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import BackToTop from '../../components/BackToTop.astro';
+
+// Define case study details
+const caseStudyDetails = {
+  title: "Social Media Revamp",
+  client: "Nordic Wellness",
+  category: "Social Media Marketing",
+  duration: "3 months",
+  imagePlaceholder: {
+    icon: "mdi:instagram",
+    text: "Project image will be placed here"
+  },
+  results: [
+    {
+      label: "Increase in Engagement",
+      value: "150%",
+      icon: "mdi:thumb-up"
+    },
+    {
+      label: "Follower Growth",
+      value: "85%",
+      icon: "mdi:account-group"
+    },
+    {
+      label: "Increase in Website Traffic",
+      value: "65%",
+      icon: "mdi:web"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Social Media Revamp Case Study | Camille's Digital Marketing"
+  description="How I transformed Nordic Wellness's social media presence, resulting in a 150% increase in engagement and 85% follower growth."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <a href="/portfolio" class="btn btn-ghost btn-sm mb-8">
+      &larr; Back to Portfolio
+    </a>
+
+    <CaseStudy
+      title={caseStudyDetails.title}
+      client={caseStudyDetails.client}
+      category={caseStudyDetails.category}
+      duration={caseStudyDetails.duration}
+      imagePlaceholder={caseStudyDetails.imagePlaceholder}
+      results={caseStudyDetails.results}
+    >
+      <div slot="overview">
+        <p>
+          Nordic Wellness, a chain of premium fitness centers in Norway, approached me to revitalize their social media presence.
+          Despite having quality facilities and services, their online presence didn't reflect their premium brand positioning,
+          and engagement was low across all platforms.
+        </p>
+        <p class="mt-4">
+          The goal was to transform their social media channels into effective marketing tools that would increase brand awareness,
+          engage their target audience, and ultimately drive more membership sign-ups.
+        </p>
+      </div>
+
+      <div slot="challenge">
+        <p>
+          When I began working with Nordic Wellness, they faced several challenges:
+        </p>
+        <ul class="list-disc pl-6 mt-2 space-y-2">
+          <li>Inconsistent posting schedule with gaps of several weeks between posts</li>
+          <li>Low-quality visuals that didn't reflect their premium brand positioning</li>
+          <li>Minimal engagement with followers (likes, comments, shares)</li>
+          <li>No clear content strategy or brand voice</li>
+          <li>Poor integration between social media and other marketing efforts</li>
+          <li>Limited use of platform-specific features (Stories, Reels, etc.)</li>
+        </ul>
+        <p class="mt-4">
+          Additionally, they were struggling to differentiate themselves in a competitive market where many fitness centers
+          had already established strong social media presences.
+        </p>
+      </div>
+
+      <div slot="solution">
+        <p>
+          I developed a comprehensive social media strategy focused on showcasing Nordic Wellness's premium facilities,
+          expert trainers, and unique approach to fitness and wellness.
+        </p>
+        <p class="mt-4">
+          The strategy included:
+        </p>
+        <ul class="list-disc pl-6 mt-2 space-y-2">
+          <li>
+            <strong>Content Pillars:</strong> Established four content pillars (Facility Showcases, Trainer Spotlights,
+            Member Success Stories, and Wellness Tips) to ensure varied yet consistent content
+          </li>
+          <li>
+            <strong>Visual Identity:</strong> Created a cohesive visual style with a premium aesthetic,
+            including templates for different content types
+          </li>
+          <li>
+            <strong>Content Calendar:</strong> Implemented a consistent posting schedule with 4-5 posts per week
+            across Instagram, Facebook, and LinkedIn
+          </li>
+          <li>
+            <strong>Engagement Strategy:</strong> Developed protocols for responding to comments and messages,
+            and proactively engaging with followers
+          </li>
+          <li>
+            <strong>Platform-Specific Content:</strong> Tailored content for each platform, leveraging platform-specific
+            features like Instagram Stories and Reels
+          </li>
+          <li>
+            <strong>Community Building:</strong> Implemented member spotlights and user-generated content campaigns
+            to foster community
+          </li>
+          <li>
+            <strong>Analytics & Optimization:</strong> Set up regular performance tracking and reporting to continuously
+            optimize the strategy
+          </li>
+        </ul>
+      </div>
+
+      <div slot="testimonial">
+        Working with Camille has been transformative for our brand. She didn't just manage our social media; she completely
+        reimagined our digital presence. The strategic approach, consistent quality, and attention to detail have resulted in
+        tangible business growth. Our social channels are now one of our most effective marketing tools.
+      </div>
+
+      <div slot="testimonial-author">
+        <p class="font-bold">Emma Larsen</p>
+        <p class="text-sm text-base-content/70">Marketing Director, Nordic Wellness</p>
+      </div>
+    </CaseStudy>
+
+    <div class="mt-16">
+      <CallToAction
+        title="Ready to Transform Your Social Media Presence?"
+        buttonText="Contact Me Today"
+        buttonLink="/contact"
+      >
+        Let's discuss how I can help you achieve similar results for your business. My strategic approach to social media
+        can help you engage your audience, build your brand, and drive real business results.
+      </CallToAction>
+    </div>
+
+    <BackToTop />
+  </div>
+</Layout>

@@ -1,0 +1,50 @@
+---
+interface Props {
+  quote: string;
+  author: string;
+  role?: string;
+  company?: string;
+  imageUrl?: string;
+}
+
+const { quote, author, role, company, imageUrl } = Astro.props;
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="card bg-base-100 shadow-md">
+  <div class="card-body">
+    <div class="flex items-start mb-4">
+      <div class="text-primary text-4xl">"</div>
+    </div>
+    <p class="text-base-content italic mb-6">{quote}</p>
+    <div class="flex items-end justify-end">
+      <div class="text-primary text-4xl">"</div>
+    </div>
+
+    <div class="flex items-center mt-4">
+      {imageUrl ? (
+        <div class="avatar mr-4">
+          <div class="w-12 h-12 rounded-full">
+            <img src={imageUrl} alt={author} />
+          </div>
+        </div>
+      ) : (
+        <div class="avatar placeholder mr-4">
+          <div class="bg-primary text-primary-content rounded-full w-12 h-12">
+            <Icon name="mdi:account" class="w-6 h-6" />
+          </div>
+        </div>
+      )}
+      <div>
+        <p class="font-bold">{author}</p>
+        {(role || company) && (
+          <p class="text-sm text-base-content/70">
+            {role && <span>{role}</span>}
+            {role && company && <span> at </span>}
+            {company && <span>{company}</span>}
+          </p>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

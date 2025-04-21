@@ -1,0 +1,107 @@
+---
+interface Props {
+  title: string;
+  client: string;
+  category: string;
+  duration: string;
+  imageUrl?: string;
+  imagePlaceholder?: {
+    icon: string;
+    text: string;
+  };
+  results?: {
+    label: string;
+    value: string;
+    icon?: string;
+  }[];
+}
+
+const {
+  title,
+  client,
+  category,
+  duration,
+  imageUrl,
+  imagePlaceholder,
+  results = []
+} = Astro.props;
+
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="card bg-base-100 shadow-xl overflow-hidden">
+  <figure class="relative h-80 bg-base-200">
+    {imageUrl ? (
+      <img src={imageUrl} alt={title} class="w-full h-full object-cover" />
+    ) : (
+      <div class="flex flex-col items-center justify-center w-full h-full text-base-content/50">
+        {imagePlaceholder && (
+          <>
+            <Icon name={imagePlaceholder.icon} class="w-16 h-16 mb-2" />
+            <p class="text-sm">{imagePlaceholder.text}</p>
+          </>
+        )}
+      </div>
+    )}
+  </figure>
+  <div class="card-body">
+    <h3 class="card-title text-2xl font-bold">{title}</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+      <div class="bg-base-200 p-4 rounded-lg">
+        <p class="text-sm font-medium text-primary">Client</p>
+        <p class="text-base-content">{client}</p>
+      </div>
+      <div class="bg-base-200 p-4 rounded-lg">
+        <p class="text-sm font-medium text-primary">Category</p>
+        <p class="text-base-content">{category}</p>
+      </div>
+      <div class="bg-base-200 p-4 rounded-lg">
+        <p class="text-sm font-medium text-primary">Duration</p>
+        <p class="text-base-content">{duration}</p>
+      </div>
+    </div>
+
+    <div class="prose max-w-none my-6">
+      <h4 class="text-xl font-semibold mb-4">Project Overview</h4>
+      <slot name="overview" />
+
+      <h4 class="text-xl font-semibold mt-8 mb-4">Challenge</h4>
+      <slot name="challenge" />
+
+      <h4 class="text-xl font-semibold mt-8 mb-4">Solution</h4>
+      <slot name="solution" />
+    </div>
+
+    {results.length > 0 && (
+      <div class="my-8">
+        <h4 class="text-xl font-semibold mb-6">Results</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {results.map((result) => (
+            <div class="bg-base-200 p-6 rounded-lg text-center">
+              {result.icon && (
+                <div class="text-primary mb-2">
+                  <Icon name={result.icon} class="w-10 h-10 mx-auto" />
+                </div>
+              )}
+              <p class="text-3xl font-bold">{result.value}</p>
+              <p class="text-sm text-base-content/70">{result.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="mt-6">
+      <h4 class="text-xl font-semibold mb-4">Testimonial</h4>
+      <blockquote class="bg-base-200 p-6 rounded-lg italic relative">
+        <div class="text-primary text-4xl absolute -top-4 -left-2">"</div>
+        <slot name="testimonial" />
+        <div class="text-primary text-4xl absolute -bottom-10 -right-2">"</div>
+      </blockquote>
+      <div class="mt-4 ml-4">
+        <slot name="testimonial-author" />
+      </div>
+    </div>
+  </div>
+</div>

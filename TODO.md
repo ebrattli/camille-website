@@ -30,17 +30,17 @@
   - [x] Process explanation
   - [x] Service-specific testimonials
 
-- [ ] Portfolio Page
-  - [ ] Case studies of successful projects
-  - [ ] Visual gallery of work samples
-  - [ ] Results and metrics achieved
-  - [ ] Client testimonials
+- [x] Portfolio Page
+  - [x] Case studies of successful projects
+  - [x] Visual gallery of work samples
+  - [x] Results and metrics achieved
+  - [x] Client testimonials
 
-- [ ] Contact Page
-  - [ ] Contact form
-  - [ ] Business hours
-  - [ ] Email/phone information
-  - [ ] Location information (if relevant)
+- [x] Contact Page
+  - [x] Contact form
+  - [x] Business hours
+  - [x] Email/phone information
+  - [x] Location information (if relevant)
 
 ## 4. Technical Improvements
 - [ ] Implement responsive design for all pages

@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import PortfolioItem from '../components/PortfolioItem.astro';
+import Testimonial from '../components/Testimonial.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { Icon } from 'astro-icon/components';
+
+// Sample portfolio items
+const portfolioItems = [
+  {
+    title: "Social Media Revamp",
+    client: "Nordic Wellness",
+    category: "Social Media Marketing",
+    imagePlaceholder: {
+      icon: "mdi:instagram",
+      text: "Project image will be placed here"
+    },
+    description: "Complete overhaul of social media presence across Instagram, Facebook, and LinkedIn, resulting in 150% increase in engagement.",
+    tags: ["Instagram", "Content Strategy", "Audience Growth"]
+  },
+  {
+    title: "E-commerce Launch",
+    client: "Oslo Boutique",
+    category: "Digital Marketing",
+    imagePlaceholder: {
+      icon: "mdi:shopping",
+      text: "Project image will be placed here"
+    },
+    description: "Developed and executed launch strategy for new e-commerce store, achieving 200+ sales in the first month.",
+    tags: ["E-commerce", "Product Launch", "Facebook Ads"]
+  },
+  {
+    title: "Brand Identity Refresh",
+    client: "Fjord Coffee Co.",
+    category: "Branding",
+    imagePlaceholder: {
+      icon: "mdi:palette",
+      text: "Project image will be placed here"
+    },
+    description: "Refreshed brand identity including logo, color palette, and brand guidelines to appeal to a younger demographic.",
+    tags: ["Branding", "Visual Identity", "Brand Strategy"]
+  },
+  {
+    title: "Email Marketing Campaign",
+    client: "Bergen Travel",
+    category: "Email Marketing",
+    imagePlaceholder: {
+      icon: "mdi:email",
+      text: "Project image will be placed here"
+    },
+    description: "Created a 6-part email sequence that increased booking conversions by 45% compared to previous campaigns.",
+    tags: ["Email Marketing", "Conversion", "Copywriting"]
+  },
+  {
+    title: "Content Marketing Strategy",
+    client: "Scandinavian Tech",
+    category: "Content Marketing",
+    imagePlaceholder: {
+      icon: "mdi:file-document",
+      text: "Project image will be placed here"
+    },
+    description: "Developed comprehensive content strategy that increased organic traffic by 78% within 6 months.",
+    tags: ["Content Strategy", "SEO", "Blog Management"]
+  },
+  {
+    title: "Influencer Campaign",
+    client: "Nordic Fashion",
+    category: "Influencer Marketing",
+    imagePlaceholder: {
+      icon: "mdi:account-group",
+      text: "Project image will be placed here"
+    },
+    description: "Coordinated campaign with 15 micro-influencers that generated 500K+ impressions and 2,000+ product sales.",
+    tags: ["Influencer Marketing", "Campaign Management", "ROI Tracking"]
+  }
+];
+
+// Sample testimonials
+const testimonials = [
+  {
+    quote: "Camille transformed our social media presence completely. Our engagement has skyrocketed and we're seeing real business results from our social channels for the first time.",
+    author: "Emma Larsen",
+    role: "Marketing Director",
+    company: "Nordic Wellness"
+  },
+  {
+    quote: "The email campaign Camille created for us exceeded all expectations. Not only did we see immediate results, but she also taught our team valuable skills we continue to use.",
+    author: "Anders Johansen",
+    role: "CEO",
+    company: "Bergen Travel"
+  },
+  {
+    quote: "Working with Camille on our brand refresh was a game-changer. She understood exactly what we needed and delivered a brand identity that perfectly represents who we are.",
+    author: "Sofia Berg",
+    role: "Founder",
+    company: "Fjord Coffee Co."
+  }
+];
+
+// Metrics
+const metrics = [
+  {
+    value: "50+",
+    label: "Successful Projects",
+    icon: "mdi:briefcase-check"
+  },
+  {
+    value: "35+",
+    label: "Happy Clients",
+    icon: "mdi:account-group"
+  },
+  {
+    value: "3M+",
+    label: "Social Impressions",
+    icon: "mdi:eye"
+  },
+  {
+    value: "250K+",
+    label: "Leads Generated",
+    icon: "mdi:account-plus"
+  }
+];
+---
+
+<Layout
+  title="Portfolio | Camille's Digital Marketing"
+  description="Explore my portfolio of successful digital marketing projects and case studies."
+>
+  <div class="space-y-16">
+    <PageHero
+      title="Portfolio"
+      subtitle="Explore my work and successful client projects"
+    />
+
+    <!-- Introduction Section -->
+    <section class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">My Work</h2>
+      <p class="mb-6">
+        Browse through a selection of my most successful projects. Each represents a unique challenge
+        and demonstrates my approach to creating effective digital marketing solutions that deliver real results.
+      </p>
+    </section>
+
+    <!-- Metrics Section -->
+    <section class="py-12 bg-base-200">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {metrics.map((metric) => (
+            <div class="card bg-base-100 shadow-md">
+              <div class="card-body items-center text-center">
+                <div class="text-primary mb-2">
+                  <Icon name={metric.icon} class="w-12 h-12" />
+                </div>
+                <p class="text-4xl font-bold">{metric.value}</p>
+                <p class="text-base-content/70">{metric.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-center mb-10">Featured Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {portfolioItems.map((item) => (
+            <PortfolioItem
+              title={item.title}
+              client={item.client}
+              category={item.category}
+              imagePlaceholder={item.imagePlaceholder}
+              tags={item.tags}
+            >
+              {item.description}
+            </PortfolioItem>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-12 bg-base-200">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-center mb-10">Client Testimonials</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial) => (
+            <Testimonial
+              quote={testimonial.quote}
+              author={testimonial.author}
+              role={testimonial.role}
+              company={testimonial.company}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl font-bold mb-6">My Approach to Projects</h2>
+        <p class="mb-10">
+          Every project follows a structured process to ensure we achieve the best possible results.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="card bg-base-100 shadow-md">
+            <div class="card-body">
+              <div class="flex items-center mb-4">
+                <div class="bg-primary text-primary-content rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                  <span class="font-bold">1</span>
+                </div>
+                <h3 class="card-title">Discovery & Research</h3>
+              </div>
+              <p>
+                I begin by understanding your business, goals, target audience, and competitors to establish a solid foundation for the project.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 shadow-md">
+            <div class="card-body">
+              <div class="flex items-center mb-4">
+                <div class="bg-primary text-primary-content rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                  <span class="font-bold">2</span>
+                </div>
+                <h3 class="card-title">Strategy Development</h3>
+              </div>
+              <p>
+                Based on research insights, I create a customized strategy tailored to your specific needs and objectives.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 shadow-md">
+            <div class="card-body">
+              <div class="flex items-center mb-4">
+                <div class="bg-primary text-primary-content rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                  <span class="font-bold">3</span>
+                </div>
+                <h3 class="card-title">Implementation</h3>
+              </div>
+              <p>
+                Once the strategy is approved, I execute the plan with attention to detail and regular communication throughout.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 shadow-md">
+            <div class="card-body">
+              <div class="flex items-center mb-4">
+                <div class="bg-primary text-primary-content rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                  <span class="font-bold">4</span>
+                </div>
+                <h3 class="card-title">Analysis & Optimization</h3>
+              </div>
+              <p>
+                I continuously monitor performance, provide regular reports, and optimize the strategy based on data and results.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <CallToAction
+      title="Ready to Create Your Success Story?"
+      buttonText="Let's Work Together"
+      buttonLink="/contact"
+    >
+      I'd love to help you achieve your digital marketing goals. Contact me today to discuss how we can work together on your next project.
+    </CallToAction>
+  </div>
+</Layout>
