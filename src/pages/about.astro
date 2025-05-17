@@ -1,94 +1,330 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import StorySection from '../components/StorySection.astro';
-import MissionValues from '../components/MissionValues.astro';
-import ValueCard from '../components/ValueCard.astro';
-import FounderProfile from '../components/FounderProfile.astro';
-import CallToAction from '../components/CallToAction.astro';
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import StorySection from "../components/StorySection.astro";
+import MissionValues from "../components/MissionValues.astro";
+import ValueCard from "../components/ValueCard.astro";
+import FounderProfile from "../components/FounderProfile.astro";
+import CallToAction from "../components/CallToAction.astro";
 
 // Define core values
 const coreValues = [
   {
     title: "Authenticity",
-    description: "I believe in honest communication and transparent practices that build trust with my clients and their audiences."
+    description:
+      "Marketing should be real and human. I believe in honest communication and transparent practices that build trust with my clients and their audiences.",
   },
   {
-    title: "Innovation",
-    description: "I stay ahead of digital trends to provide cutting-edge strategies that give my clients a competitive edge."
+    title: "Simplicity",
+    description:
+      "Marketing doesn't have to be complicated to be effective. I focus on clear, straightforward strategies that work.",
   },
   {
-    title: "Results-Driven",
-    description: "I focus on measurable outcomes and ROI, not just vanity metrics."
-  }
+    title: "Empowerment",
+    description:
+      "I teach you marketing skills you can use long after our work together ends, helping you become more self-sufficient.",
+  },
 ];
 
 // Define approach values
 const approachValues = [
   {
-    title: "Personalized Strategy",
-    description: "I create custom solutions tailored to each client's unique goals, audience, and industry."
+    title: "Accessibility",
+    description:
+      "Marketing shouldn't be a mysterious black box. I believe in demystifying digital marketing and making it accessible to businesses of all sizes.",
   },
   {
-    title: "Data-Informed",
-    description: "I use analytics and research to guide my decisions and optimize campaigns."
+    title: "Inclusion",
+    description:
+      "Every brand deserves to be seen and heard. I champion diverse voices and work to create inclusive marketing strategies.",
   },
   {
-    title: "Collaborative Partnership",
-    description: "I work closely with my clients, treating their business as my own."
-  }
+    title: "Results-Driven",
+    description:
+      "I measure success not just in metrics, but in the real impact our work has on your business growth and the communities you serve.",
+  },
+];
+
+// Define journey steps
+const journeySteps = [
+  {
+    number: "1",
+    title: "Educator & Communicator",
+    description:
+      "Started my career in education, developing skills in clear communication and helping others understand complex concepts.",
+  },
+  {
+    number: "2",
+    title: "Project Manager",
+    description:
+      "Transitioned to corporate project management, where I honed my organizational and strategic planning skills.",
+  },
+  {
+    number: "3",
+    title: "Digital Marketing Specialist",
+    description:
+      "Discovered my passion for marketing and began helping small businesses develop their online presence.",
+  },
+  {
+    number: "4",
+    title: "Tarsier Digital Founder",
+    description:
+      "Founded Tarsier Digital Solutions to provide practical, effective marketing support to purpose-driven brands.",
+  },
+];
+
+// Define tools
+const marketingTools = [
+  { category: "Content Creation", tools: "Canva, CapCut, ChatGPT" },
+  { category: "Advertising", tools: "Meta Ads, Google Ads" },
+  { category: "Website", tools: "Squarespace, WordPress" },
+  { category: "CRM", tools: "HubSpot (light)" },
+  { category: "Email Marketing", tools: "Mailchimp, ConvertKit" },
+  { category: "Analytics", tools: "Google Analytics, Meta Insights" },
 ];
 ---
 
 <Layout
-  title="About Me | Camille's Digital Marketing"
-  description="Learn more about Camille's Digital Marketing, my mission, values, and the story behind my business."
+  title="About Me | Tarsier Digital"
+  description="Meet Camille Nicole, digital marketer, educator, and champion for purpose-driven brands."
 >
   <div class="space-y-16">
     <PageHero
-      title="About Me"
-      subtitle="Get to know the story, mission, and person behind Camille's Digital Marketing"
+      title="Meet Camille Nicole"
+      subtitle="Digital marketer, educator, and champion for purpose-driven brands"
     />
 
     <StorySection
       title="My Story"
       imagePlaceholder={{
         icon: "mdi:image",
-        text: "Professional photo of Camille will be placed here"
+        text: "Professional photo of Camille will be placed here",
       }}
     >
       <p>
-        Camille's Digital Marketing was founded in 2020 with a simple mission: to help small and medium-sized businesses thrive in the digital landscape.
+        Hi there! I'm Camille, the founder of Tarsier Digital Solutions. My
+        journey to digital marketing started in an unexpected place – the
+        classroom. As an educator with a passion for clear communication, I
+        discovered that the same skills that made me an effective teacher were
+        invaluable in the world of marketing.
       </p>
       <p class="mt-4">
-        After spending years in corporate marketing roles, I noticed that many smaller businesses struggled to access quality digital marketing services that were both effective and affordable. I decided to bridge this gap by creating a boutique agency that combines enterprise-level expertise with personalized service.
+        After transitioning from education to project management in the
+        corporate world, I found myself drawn to the creative and strategic
+        aspects of marketing. I loved helping brands tell their stories and
+        connect with their audiences in authentic ways.
       </p>
       <p class="mt-4">
-        Since then, I've helped dozens of businesses across various industries establish their online presence, reach their target audiences, and achieve measurable growth through strategic digital marketing solutions.
+        With a multicultural background and experience working across borders, I
+        bring a unique international perspective to my work. I'm especially
+        passionate about supporting immigrant-led businesses and purpose-driven
+        brands that are making a positive impact in their communities.
       </p>
     </StorySection>
 
+    <section class="container mx-auto px-4 py-8">
+      <h2 class="mb-6 text-2xl font-bold">My Journey</h2>
+      <div class="card bg-base-100 shadow">
+        <div class="card-body">
+          <div class="space-y-6">
+            {
+              journeySteps.map((step) => (
+                <div class="flex">
+                  <div class="mr-4">
+                    <div class="badge badge-primary badge-lg flex h-10 w-10 items-center justify-center rounded-full font-semibold">
+                      {step.number}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="mb-1 font-semibold">{step.title}</h4>
+                    <p class="text-base-content/70">{step.description}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
     <MissionValues
-      title="My Mission & Values"
-      missionStatement="My mission is to empower businesses with strategic digital marketing solutions that drive real results. I believe in creating authentic connections between brands and their audiences through thoughtful, data-driven strategies that prioritize long-term growth over quick fixes."
+      title="Brand Philosophy & Values"
+      missionStatement="I believe marketing should be real, empowering, and human. No gimmicks, no sleazy tactics, just authentic communication that builds genuine connections between brands and their audiences. My mission is to help you show up confidently online with marketing that feels true to your values and resonates with the people you want to reach."
       coreValues={coreValues}
       approachValues={approachValues}
     />
 
+    <section class="container mx-auto px-4 py-8">
+      <div class="card bg-base-100 shadow">
+        <div class="card-body">
+          <h2 class="card-title mb-4 text-2xl">My Approach</h2>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <span class="badge badge-primary badge-sm mr-2">✓</span>
+              <span
+                ><strong>Simplicity:</strong> Marketing doesn't have to be complicated
+                to be effective.</span
+              >
+            </li>
+            <li class="flex items-start">
+              <span class="badge badge-primary badge-sm mr-2">✓</span>
+              <span
+                ><strong>Authenticity:</strong> Your brand voice should sound like
+                you, not a marketing robot.</span
+              >
+            </li>
+            <li class="flex items-start">
+              <span class="badge badge-primary badge-sm mr-2">✓</span>
+              <span
+                ><strong>Education:</strong> I'll teach you marketing skills you can
+                use long after our work together ends.</span
+              >
+            </li>
+            <li class="flex items-start">
+              <span class="badge badge-primary badge-sm mr-2">✓</span>
+              <span
+                ><strong>Results:</strong> Creative campaigns that look beautiful AND
+                drive real business results.</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 py-8">
+      <h2 class="mb-6 text-2xl font-bold">Our Tools</h2>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+        {
+          marketingTools.map((item) => (
+            <div class="card bg-base-100 shadow">
+              <div class="card-body p-4">
+                <h4 class="card-title text-base">{item.category}</h4>
+                <p class="text-base-content/70 text-sm">{item.tools}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="text-base-content/70 mt-6 italic">
+        We're constantly learning and adding new tools to our toolkit to better
+        serve our clients.
+      </p>
+    </section>
+
     <FounderProfile
-      title="Meet the Founder"
-      name="Camille Nicole Brattli"
-      role="Founder & Digital Marketing Strategist"
+      title='Why "Tarsier"?'
+      name="Small but mighty"
+      role="Just like our namesake"
     >
-      With over 10 years of experience in digital marketing, I specialize in creating comprehensive strategies that align with business goals. My expertise spans social media marketing, content creation, and digital advertising. I'm passionate about helping small and medium-sized businesses establish their online presence and achieve measurable growth through strategic digital marketing solutions.
+      <p>
+        The tarsier is one of the world's smallest primates, but what it lacks
+        in size, it makes up for with extraordinary vision and precision. With
+        eyes larger than its brain, the tarsier can spot the smallest details in
+        its environment.
+      </p>
+      <p class="mt-4">
+        Just like this remarkable creature, our digital agency may be small, but
+        we have an exceptional eye for detail and the ability to spot
+        opportunities that others might miss. We're nimble, focused, and precise
+        in our approach to marketing.
+      </p>
+      <p class="mt-4">
+        And while tarsiers might be tiny, they're known for their impressive
+        leaps — just like the growth we help our clients achieve.
+      </p>
     </FounderProfile>
+
+    <section class="container mx-auto px-4 py-8">
+      <h2 class="mb-6 text-2xl font-bold">How We Work</h2>
+      <div class="card bg-base-100 shadow">
+        <div class="card-body">
+          <ul class="steps steps-vertical space-y-6">
+            <li class="step-primary flex items-start">
+              <div class="flex">
+                <div
+                  class="badge badge-primary badge-lg mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center"
+                >
+                  1
+                </div>
+                <div>
+                  <h3 class="mb-1 text-lg font-semibold">Low-Pressure</h3>
+                  <p class="text-base-content/70">
+                    No hard sells or pushy tactics. We create a relaxed environment
+                    where you can explore options without feeling rushed or
+                    pressured.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step-primary flex items-start">
+              <div class="flex">
+                <div
+                  class="badge badge-primary badge-lg mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center"
+                >
+                  2
+                </div>
+                <div>
+                  <h3 class="mb-1 text-lg font-semibold">High-Support</h3>
+                  <p class="text-base-content/70">
+                    We're with you every step of the way, providing guidance,
+                    answering questions, and making sure you feel confident in the
+                    process.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step-primary flex items-start">
+              <div class="flex">
+                <div
+                  class="badge badge-primary badge-lg mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center"
+                >
+                  3
+                </div>
+                <div>
+                  <h3 class="mb-1 text-lg font-semibold">Results-Driven</h3>
+                  <p class="text-base-content/70">
+                    While we keep things friendly and approachable, we're serious
+                    about delivering measurable results that impact your bottom
+                    line.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step-primary flex items-start">
+              <div class="flex">
+                <div
+                  class="badge badge-primary badge-lg mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center"
+                >
+                  4
+                </div>
+                <div>
+                  <h3 class="mb-1 text-lg font-semibold">Knowledge-Sharing</h3>
+                  <p class="text-base-content/70">
+                    We believe in empowering our clients. That means teaching you
+                    skills and strategies you can use even after our work together
+                    concludes.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <CallToAction
       title="Ready to Work With Me?"
-      buttonText="Contact Me Today"
+      buttonText="Book a Free Strategy Call"
       buttonLink="/contact"
     >
-      I'm passionate about helping businesses like yours succeed in the digital world. Let's start a conversation about how I can help you reach your goals.
+      <div class="prose">
+        Ready to explore how Tarsier Digital can help your brand shine online?
+        <span class="text-accent font-medium">Let's start a conversation</span> about your marketing goals.
+      </div>
     </CallToAction>
   </div>
 </Layout>

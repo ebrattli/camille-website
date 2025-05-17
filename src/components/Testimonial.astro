@@ -4,47 +4,51 @@ interface Props {
   author: string;
   role?: string;
   company?: string;
+  category?: string;
   imageUrl?: string;
 }
 
-const { quote, author, role, company, imageUrl } = Astro.props;
+const { quote, author, role, company, category, imageUrl } = Astro.props;
 import { Icon } from 'astro-icon/components';
 ---
 
-<div class="card bg-base-100 shadow-md">
-  <div class="card-body">
-    <div class="flex items-start mb-4">
-      <div class="text-primary text-4xl">"</div>
+<div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300">
+  <div class="card-body px-6 py-8 md:px-10">
+    <div class="flex items-start mb-3">
+      <div class="text-primary text-5xl opacity-60">"</div>
     </div>
-    <p class="text-base-content italic mb-6">{quote}</p>
+    <p class="text-base-content italic mb-8 text-lg md:text-xl leading-relaxed">{quote}</p>
     <div class="flex items-end justify-end">
-      <div class="text-primary text-4xl">"</div>
+      <div class="text-primary text-5xl opacity-60">"</div>
     </div>
 
-    <div class="flex items-center mt-4">
+    <div class="flex flex-wrap items-center gap-3 mt-6 pt-4 border-t border-base-300">
       {imageUrl ? (
         <div class="avatar mr-4">
-          <div class="w-12 h-12 rounded-full">
+          <div class="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             <img src={imageUrl} alt={author} />
           </div>
         </div>
       ) : (
         <div class="avatar placeholder mr-4">
-          <div class="bg-primary text-primary-content rounded-full w-12 h-12">
-            <Icon name="mdi:account" class="w-6 h-6" />
+          <div class="bg-primary text-primary-content rounded-full w-16 h-16">
+            <Icon name="mdi:account" class="w-8 h-8" />
           </div>
         </div>
       )}
-      <div>
-        <p class="font-bold">{author}</p>
+      <div class="flex-1">
+        <p class="font-bold text-lg">{author}</p>
         {(role || company) && (
           <p class="text-sm text-base-content/70">
             {role && <span>{role}</span>}
             {role && company && <span> at </span>}
-            {company && <span>{company}</span>}
+            {company && <span class="font-medium">{company}</span>}
           </p>
         )}
       </div>
+      {category && (
+        <div class="badge badge-primary badge-lg">{category}</div>
+      )}
     </div>
   </div>
 </div>

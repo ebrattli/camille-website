@@ -21,7 +21,7 @@ const { items } = Astro.props;
     <div class="bg-base-100 rounded-lg shadow-md p-6 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
       <!-- Icon -->
       <div class="flex justify-center mb-4">
-        <div class="bg-primary/10 p-4 rounded-full text-primary">
+        <div class="bg-primary/10 p-4 rounded-full text-primary-content">
           <Icon name={item.icon} class="w-8 h-8" />
         </div>
       </div>
@@ -49,7 +49,7 @@ const { items } = Astro.props;
         <div class="text-center mt-2">
           <a
             href={item.link}
-            class="text-primary hover:underline font-medium inline-flex items-center justify-center gap-1 break-words"
+            class="text-primary-content hover:underline font-medium inline-flex items-center justify-center gap-1 break-words"
           >
             <span class="break-all overflow-hidden">{item.linkText || item.link}</span>
             <Icon name="mdi:arrow-right" class="w-4 h-4 flex-shrink-0" />

@@ -1,0 +1,25 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<div
+  class="card bg-base-100 card-bordered card-compact h-full shadow-none transition-shadow duration-300 hover:shadow-xl"
+>
+  <div class="card-body">
+    <div class="card-actions mb-4 justify-start">
+      <div class="badge badge-primary badge-lg p-4">
+        <Icon name={icon} class="h-6 w-6" />
+      </div>
+    </div>
+    <h3 class="card-title text-base-content">{title}</h3>
+    <p class="text-base-content/70">{description}</p>
+  </div>
+</div>

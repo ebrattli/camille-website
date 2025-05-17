@@ -5,38 +5,66 @@ interface Props {
 }
 
 // Get props with default values
-const { siteTitle = "Camille's Business" } = Astro.props;
+const { siteTitle } = Astro.props;
 
 // Navigation links
 const navItems = [
   { text: "Home", href: "/" },
   { text: "Services", href: "/services" },
   { text: "Portfolio", href: "/portfolio" },
-  { text: "About", href: "/about" },
+  {
+    text: "About",
+    href: "#",
+    hasDropdown: true,
+    dropdownItems: [
+      { text: "About Me", href: "/about" },
+      { text: "About Tarsier", href: "/about-business" },
+    ],
+  },
   { text: "Contact", href: "/contact" },
 ];
 ---
 
-<div class="navbar bg-base-100 shadow-sm flex flex-row items-center justify-between">
+<div
+  class="navbar bg-base-200 flex flex-row items-center justify-between shadow-sm"
+>
   <div class="navbar-start">
     <div class="flex-shrink-0">
       <!-- You can replace this with an actual logo later -->
-      <a href="/" class="text-xl font-bold text-primary">{siteTitle}</a>
+      <a href="/" class="text-primary-content text-xl font-bold">{siteTitle}</a>
     </div>
   </div>
 
   <div class="navbar-center hidden md:block">
     <ul class="flex space-x-6">
-      {navItems.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class="text-gray-600 hover:text-primary font-medium px-2 py-1"
-          >
-            {item.text}
-          </a>
-        </li>
-      ))}
+      {
+        navItems.map((item) => (
+          <li class={item.hasDropdown ? "dropdown dropdown-hover" : ""}>
+            <a
+              href={item.href}
+              class="text-base-content/80 hover:text-primary-content flex items-center px-2 py-1 font-medium"
+              tabindex={item.hasDropdown ? "0" : undefined}
+            >
+              {item.text}
+              {item.hasDropdown && <span class="ml-1 text-xs">▼</span>}
+            </a>
+            {item.hasDropdown && (
+              <ul class="dropdown-content menu bg-base-100 rounded-box z-[1] mt-2 w-52 p-2 shadow-md">
+                {item.dropdownItems.map((dropItem) => (
+                  <li>
+                    <a
+                      href={dropItem.href}
+                      class="text-base-content/80 hover:text-primary-content hover:bg-base-200"
+                    >
+                      {dropItem.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
     </ul>
   </div>
 
@@ -44,7 +72,7 @@ const navItems = [
     <!-- Call to action button -->
     <a
       href="/contact"
-      class="btn btn-primary btn-sm md:btn-md rounded-full px-4 md:px-6 font-medium shadow-md hover:shadow-lg"
+      class="btn btn-primary btn-sm md:btn-md rounded-full px-4 font-medium shadow-md hover:shadow-lg md:px-6"
     >
       Book Now
     </a>

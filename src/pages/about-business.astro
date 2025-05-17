@@ -1,0 +1,291 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import CallToAction from "../components/CallToAction.astro";
+
+// Define work approach steps
+const workApproach = [
+  {
+    number: 1,
+    title: "Low-Pressure",
+    description:
+      "No hard sells or pushy tactics. I create a relaxed environment where you can explore options without feeling rushed or pressured.",
+  },
+  {
+    number: 2,
+    title: "High-Support",
+    description:
+      "I'm with you every step of the way, providing guidance, answering questions, and making sure you feel confident in the process.",
+  },
+  {
+    number: 3,
+    title: "Results-Driven",
+    description:
+      "While I keep things friendly and approachable, I'm serious about delivering measurable results that impact your bottom line.",
+  },
+  {
+    number: 4,
+    title: "Knowledge-Sharing",
+    description:
+      "I believe in empowering my clients. That means teaching you skills and strategies you can use even after our work together concludes.",
+  },
+];
+
+// Define promises
+const promises = [
+  {
+    title: "Transparency",
+    description:
+      "I'll always be honest about what's working, what's not, and what you can expect from our work together.",
+    icon: "✓",
+  },
+  {
+    title: "Responsiveness",
+    description:
+      "You'll never be left wondering or waiting. I prioritize clear and timely communication.",
+    icon: "✓",
+  },
+  {
+    title: "Support",
+    description:
+      "I'm here to be your marketing ally, providing guidance and expertise every step of the way.",
+    icon: "✓",
+  },
+];
+---
+
+<Layout
+  title="About Tarsier Digital"
+  description="Learn about Tarsier Digital - small but mighty, just like our namesake"
+>
+  <div class="space-y-16">
+    <!-- Hero Section with gradient background -->
+    <div class="from-primary-content/20 bg-gradient-to-b to-white">
+      <PageHero
+        title="About Tarsier Digital"
+        subtitle="Small but mighty, just like our namesake"
+      />
+    </div>
+
+    <!-- Why Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+          <div class="prose">
+            <h2 class="mb-6 text-2xl font-bold md:text-4xl">Why "Tarsier"?</h2>
+            <p class="text-base-content/80 mb-6">
+              The tarsier is one of the world's smallest primates, but what it
+              lacks in size, it makes up for with extraordinary vision and
+              precision. With eyes larger than its brain, the tarsier can spot
+              the smallest details in its environment.
+            </p>
+            <p class="text-base-content/80 mb-6">
+              Just like this remarkable creature, our digital agency may be
+              small, but we have an exceptional eye for detail and the ability
+              to spot opportunities that others might miss. We're nimble,
+              focused, and precise in our approach to marketing.
+            </p>
+            <p class="text-base-content/80">
+              And while tarsiers might be tiny, they're known for their
+              impressive leaps — just like the growth we help our clients
+              achieve.
+            </p>
+          </div>
+          <div class="relative">
+            <figure class="overflow-hidden rounded-lg shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80"
+                alt="Tarsier"
+                class="h-auto w-full object-cover"
+              />
+            </figure>
+            <div
+              class="bg-primary/20 absolute -bottom-10 -left-10 -z-10 h-48 w-48 rounded-full"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How I Work Section -->
+    <section class="bg-base-200 py-16">
+      <div class="container mx-auto px-4">
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-2xl font-bold md:text-4xl">How I Work</h2>
+          <p class="text-base-content/70 mx-auto max-w-2xl">
+            My approach is designed to make marketing feel manageable, not
+            overwhelming
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+          <div>
+            <ul class="steps steps-vertical space-y-6">
+              {
+                workApproach.map((approach) => (
+                  <li class="step-primary flex items-start">
+                    <div class="flex">
+                      <div class="badge badge-primary badge-lg mt-1 mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full">
+                        {approach.number}
+                      </div>
+                      <div>
+                        <h3 class="mb-1 text-lg font-semibold">
+                          {approach.title}
+                        </h3>
+                        <p class="text-base-content/70">
+                          {approach.description}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div>
+            <div class="card bg-base-300 shadow">
+              <div class="card-body">
+                <h3 class="card-title mb-4 text-xl font-semibold">
+                  What Makes Me Different
+                </h3>
+
+                <div class="space-y-4">
+                  <div class="border-primary border-l-4 pl-4">
+                    <h4 class="font-medium">Personal Touch</h4>
+                    <p class="text-base-content/70 text-sm">
+                      When you work with me, you work directly with me - not an
+                      account manager or junior associate.
+                    </p>
+                  </div>
+
+                  <div class="border-primary border-l-4 pl-4">
+                    <h4 class="font-medium">Practical Education</h4>
+                    <p class="text-base-content/70 text-sm">
+                      I don't just do the work for you; I teach you marketable
+                      skills along the way.
+                    </p>
+                  </div>
+
+                  <div class="border-primary border-l-4 pl-4">
+                    <h4 class="font-medium">Multicultural Perspective</h4>
+                    <p class="text-base-content/70 text-sm">
+                      My international background brings a unique viewpoint to
+                      marketing strategies.
+                    </p>
+                  </div>
+
+                  <div class="border-primary border-l-4 pl-4">
+                    <h4 class="font-medium">Focus on Accessibility</h4>
+                    <p class="text-base-content/70 text-sm">
+                      I make digital marketing accessible to businesses of all
+                      sizes, especially those who've been intimidated by it
+                      before.
+                    </p>
+                  </div>
+
+                  <div class="border-primary border-l-4 pl-4">
+                    <h4 class="font-medium">Ethical Approach</h4>
+                    <p class="text-base-content/70 text-sm">
+                      I only use honest marketing tactics that build genuine
+                      connections with your audience.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Believe Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <h2 class="mb-6 text-2xl font-bold md:text-4xl">What We Believe</h2>
+          <p class="text-base-content/80">
+            Our core beliefs guide everything we do in our marketing practice
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div class="card bg-base-100 text-center shadow">
+            <div class="card-body items-center">
+              <div class="avatar placeholder">
+                <div class="bg-primary/20 text-primary-content h-12 w-12 rounded-full">
+                  <span class="text-xl">✨</span>
+                </div>
+              </div>
+              <h3 class="card-title text-xl font-semibold">Accessibility</h3>
+              <p class="text-base-content/70">
+                Marketing shouldn't be a mysterious black box. We believe in
+                demystifying digital marketing and making it accessible to
+                businesses of all sizes.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 text-center shadow">
+            <div class="card-body items-center">
+              <div class="avatar placeholder">
+                <div class="bg-primary/20 text-primary-content h-12 w-12 rounded-full">
+                  <span class="text-xl">🌐</span>
+                </div>
+              </div>
+              <h3 class="card-title text-xl font-semibold">Inclusion</h3>
+              <p class="text-base-content/70">
+                Every brand deserves to be seen and heard. We champion diverse
+                voices and work to create inclusive marketing strategies that
+                resonate with varied audiences.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 text-center shadow">
+            <div class="card-body items-center">
+              <div class="avatar placeholder">
+                <div class="bg-primary/20 text-primary h-12 w-12 rounded-full">
+                  <span class="text-xl">🚀</span>
+                </div>
+              </div>
+              <h3 class="card-title text-xl font-semibold">Impact</h3>
+              <p class="text-base-content/70">
+                We measure success not just in metrics and numbers, but in the
+                real impact our work has on your business growth and the
+                communities you serve.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-primary/20 py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="mb-4 text-2xl font-bold md:text-4xl">
+          See What We Can Do Together
+        </h2>
+        <p class="text-base-content/80 mx-auto mb-8 max-w-2xl">
+          Ready to explore how I can help your brand shine online? Let's start a
+          conversation about your marketing goals.
+        </p>
+        <CallToAction
+          title="Let's Work Together"
+          buttonText="Book a Free Strategy Call"
+          buttonLink="/contact"
+        >
+          <div class="prose">
+            Ready to explore how Tarsier Digital can help your brand shine
+            online?
+            <span class="text-accent font-medium"
+              >Let's start a conversation</span
+            > about your marketing goals.
+          </div>
+        </CallToAction>
+      </div>
+    </section>
+  </div>
+</Layout>

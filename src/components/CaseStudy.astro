@@ -49,15 +49,15 @@ import { Icon } from 'astro-icon/components';
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
       <div class="bg-base-200 p-4 rounded-lg">
-        <p class="text-sm font-medium text-primary">Client</p>
+        <p class="text-sm font-medium text-primary-content">Client</p>
         <p class="text-base-content">{client}</p>
       </div>
       <div class="bg-base-200 p-4 rounded-lg">
-        <p class="text-sm font-medium text-primary">Category</p>
+        <p class="text-sm font-medium text-primary-content">Category</p>
         <p class="text-base-content">{category}</p>
       </div>
       <div class="bg-base-200 p-4 rounded-lg">
-        <p class="text-sm font-medium text-primary">Duration</p>
+        <p class="text-sm font-medium text-primary-content">Duration</p>
         <p class="text-base-content">{duration}</p>
       </div>
     </div>
@@ -80,7 +80,7 @@ import { Icon } from 'astro-icon/components';
           {results.map((result) => (
             <div class="bg-base-200 p-6 rounded-lg text-center">
               {result.icon && (
-                <div class="text-primary mb-2">
+                <div class="text-primary-content mb-2">
                   <Icon name={result.icon} class="w-10 h-10 mx-auto" />
                 </div>
               )}
@@ -95,9 +95,9 @@ import { Icon } from 'astro-icon/components';
     <div class="mt-6">
       <h4 class="text-xl font-semibold mb-4">Testimonial</h4>
       <blockquote class="bg-base-200 p-6 rounded-lg italic relative">
-        <div class="text-primary text-4xl absolute -top-4 -left-2">"</div>
+        <div class="text-primary-content text-4xl absolute -top-4 -left-2">"</div>
         <slot name="testimonial" />
-        <div class="text-primary text-4xl absolute -bottom-10 -right-2">"</div>
+        <div class="text-primary-content text-4xl absolute -bottom-10 -right-2">"</div>
       </blockquote>
       <div class="mt-4 ml-4">
         <slot name="testimonial-author" />
