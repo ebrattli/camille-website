@@ -6,7 +6,11 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "pnpm dlx eslint \"src/**/*.{js,ts,astro}\" ",
+    "lint:fix": "pnpm dlx eslint \"src/**/*.{js,ts,astro}\" --fix",
+    "format": "prettier --write \"src/**/*.{js,ts,astro,md,mdx,json,yaml,css}\"",
+    "format:check": "prettier --check \"src/**/*.{js,ts,astro,md,mdx,json,yaml,css}\""
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.0",

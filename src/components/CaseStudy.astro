@@ -23,81 +23,89 @@ const {
   duration,
   imageUrl,
   imagePlaceholder,
-  results = []
+  results = [],
 } = Astro.props;
 
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 ---
 
-<div class="card bg-base-100 shadow-xl overflow-hidden">
-  <figure class="relative h-80 bg-base-200">
-    {imageUrl ? (
-      <img src={imageUrl} alt={title} class="w-full h-full object-cover" />
-    ) : (
-      <div class="flex flex-col items-center justify-center w-full h-full text-base-content/50">
-        {imagePlaceholder && (
-          <>
-            <Icon name={imagePlaceholder.icon} class="w-16 h-16 mb-2" />
-            <p class="text-sm">{imagePlaceholder.text}</p>
-          </>
-        )}
-      </div>
-    )}
+<div class="card bg-base-100 overflow-hidden shadow-xl">
+  <figure class="bg-base-200 relative h-80">
+    {
+      imageUrl ? (
+        <img src={imageUrl} alt={title} class="h-full w-full object-cover" />
+      ) : (
+        <div class="text-base-content/50 flex h-full w-full flex-col items-center justify-center">
+          {imagePlaceholder && (
+            <>
+              <Icon name={imagePlaceholder.icon} class="mb-2 h-16 w-16" />
+              <p class="text-sm">{imagePlaceholder.text}</p>
+            </>
+          )}
+        </div>
+      )
+    }
   </figure>
   <div class="card-body">
     <h3 class="card-title text-2xl font-bold">{title}</h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
-      <div class="bg-base-200 p-4 rounded-lg">
-        <p class="text-sm font-medium text-primary-content">Client</p>
+    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div class="bg-base-200 rounded-lg p-4">
+        <p class="text-primary-content text-sm font-medium">Client</p>
         <p class="text-base-content">{client}</p>
       </div>
-      <div class="bg-base-200 p-4 rounded-lg">
-        <p class="text-sm font-medium text-primary-content">Category</p>
+      <div class="bg-base-200 rounded-lg p-4">
+        <p class="text-primary-content text-sm font-medium">Category</p>
         <p class="text-base-content">{category}</p>
       </div>
-      <div class="bg-base-200 p-4 rounded-lg">
-        <p class="text-sm font-medium text-primary-content">Duration</p>
+      <div class="bg-base-200 rounded-lg p-4">
+        <p class="text-primary-content text-sm font-medium">Duration</p>
         <p class="text-base-content">{duration}</p>
       </div>
     </div>
 
-    <div class="prose max-w-none my-6">
-      <h4 class="text-xl font-semibold mb-4">Project Overview</h4>
+    <div class="prose my-6 max-w-none">
+      <h4 class="mb-4 text-xl font-semibold">Project Overview</h4>
       <slot name="overview" />
 
-      <h4 class="text-xl font-semibold mt-8 mb-4">Challenge</h4>
+      <h4 class="mt-8 mb-4 text-xl font-semibold">Challenge</h4>
       <slot name="challenge" />
 
-      <h4 class="text-xl font-semibold mt-8 mb-4">Solution</h4>
+      <h4 class="mt-8 mb-4 text-xl font-semibold">Solution</h4>
       <slot name="solution" />
     </div>
 
-    {results.length > 0 && (
-      <div class="my-8">
-        <h4 class="text-xl font-semibold mb-6">Results</h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {results.map((result) => (
-            <div class="bg-base-200 p-6 rounded-lg text-center">
-              {result.icon && (
-                <div class="text-primary-content mb-2">
-                  <Icon name={result.icon} class="w-10 h-10 mx-auto" />
-                </div>
-              )}
-              <p class="text-3xl font-bold">{result.value}</p>
-              <p class="text-sm text-base-content/70">{result.label}</p>
-            </div>
-          ))}
+    {
+      results.length > 0 && (
+        <div class="my-8">
+          <h4 class="mb-6 text-xl font-semibold">Results</h4>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {results.map((result) => (
+              <div class="bg-base-200 rounded-lg p-6 text-center">
+                {result.icon && (
+                  <div class="text-primary-content mb-2">
+                    <Icon name={result.icon} class="mx-auto h-10 w-10" />
+                  </div>
+                )}
+                <p class="text-3xl font-bold">{result.value}</p>
+                <p class="text-base-content/70 text-sm">{result.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    )}
+      )
+    }
 
     <div class="mt-6">
-      <h4 class="text-xl font-semibold mb-4">Testimonial</h4>
-      <blockquote class="bg-base-200 p-6 rounded-lg italic relative">
-        <div class="text-primary-content text-4xl absolute -top-4 -left-2">"</div>
+      <h4 class="mb-4 text-xl font-semibold">Testimonial</h4>
+      <blockquote class="bg-base-200 relative rounded-lg p-6 italic">
+        <div class="text-primary-content absolute -top-4 -left-2 text-4xl">
+          "
+        </div>
         <slot name="testimonial" />
-        <div class="text-primary-content text-4xl absolute -bottom-10 -right-2">"</div>
+        <div class="text-primary-content absolute -right-2 -bottom-10 text-4xl">
+          "
+        </div>
       </blockquote>
       <div class="mt-4 ml-4">
         <slot name="testimonial-author" />

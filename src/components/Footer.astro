@@ -15,20 +15,20 @@ const socialLinks = [
     platform: "Facebook",
     url: "https://facebook.com/tarsierdigital",
     icon: "mdi:facebook",
-    label: "Facebook"
+    label: "Facebook",
   },
   {
     platform: "Instagram",
     url: "https://instagram.com/tarsierdigital",
     icon: "mdi:instagram",
-    label: "Instagram"
+    label: "Instagram",
   },
   {
     platform: "LinkedIn",
     url: "https://linkedin.com/company/tarsierdigital",
     icon: "mdi:linkedin",
-    label: "LinkedIn"
-  }
+    label: "LinkedIn",
+  },
 ];
 
 const navigationLinks = [
@@ -36,14 +36,14 @@ const navigationLinks = [
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
-  { name: "Contact", href: "/contact" }
+  { name: "Contact", href: "/contact" },
 ];
 
 const serviceLinks = [
   { name: "Strategy", href: "/services#strategy" },
   { name: "Content Creation", href: "/services#content" },
   { name: "Paid Advertising", href: "/services#advertising" },
-  { name: "Branding", href: "/services#branding" }
+  { name: "Branding", href: "/services#branding" },
 ];
 ---
 
@@ -53,88 +53,87 @@ const serviceLinks = [
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
       <!-- Brand & Description -->
       <div class="lg:col-span-1">
-        <h3 class="text-xl font-bold text-primary mb-4">{siteTitle}</h3>
+        <h3 class="text-primary mb-4 text-xl font-bold">{siteTitle}</h3>
         <p class="text-base-content/80 mb-6 leading-relaxed">
-          Empowering purpose-driven brands with simple, effective, and beautiful marketing solutions.
+          Empowering purpose-driven brands with simple, effective, and beautiful
+          marketing solutions.
         </p>
-        <SocialLinks 
-          links={socialLinks} 
-          className="flex gap-3"
-        />
+        <SocialLinks links={socialLinks} className="flex gap-3" />
       </div>
 
       <!-- Navigation Links -->
       <div>
-        <h4 class="text-lg font-semibold mb-4">Navigation</h4>
+        <h4 class="mb-4 text-lg font-semibold">Navigation</h4>
         <ul class="space-y-2">
-          {navigationLinks.map((link) => (
-            <li>
-              <a 
-                href={link.href} 
-                class="text-base-content/80 hover:text-primary transition-colors duration-200"
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
+          {
+            navigationLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-base-content/80 hover:text-primary transition-colors duration-200"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       <!-- Services -->
       <div>
-        <h4 class="text-lg font-semibold mb-4">Services</h4>
+        <h4 class="mb-4 text-lg font-semibold">Services</h4>
         <ul class="space-y-2">
-          {serviceLinks.map((service) => (
-            <li>
-              <a 
-                href={service.href} 
-                class="text-base-content/80 hover:text-primary transition-colors duration-200"
-              >
-                {service.name}
-              </a>
-            </li>
-          ))}
+          {
+            serviceLinks.map((service) => (
+              <li>
+                <a
+                  href={service.href}
+                  class="text-base-content/80 hover:text-primary transition-colors duration-200"
+                >
+                  {service.name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       <!-- Contact Info -->
       <div>
-        <h4 class="text-lg font-semibold mb-4">Get In Touch</h4>
+        <h4 class="mb-4 text-lg font-semibold">Get In Touch</h4>
         <div class="space-y-3">
           <div class="flex items-center gap-2">
-            <Icon name="mdi:email" class="size-5 text-primary" />
-            <a 
-              href="mailto:hello@tarsierdigital.com" 
+            <Icon name="mdi:email" class="text-primary size-5" />
+            <a
+              href="mailto:hello@tarsierdigital.com"
               class="text-base-content/80 hover:text-primary transition-colors duration-200"
             >
               hello@tarsierdigital.com
             </a>
           </div>
-          
+
           <div class="flex items-center gap-2">
-            <Icon name="mdi:phone" class="size-5 text-primary" />
-            <a 
-              href="tel:+1234567890" 
+            <Icon name="mdi:phone" class="text-primary size-5" />
+            <a
+              href="tel:+1234567890"
               class="text-base-content/80 hover:text-primary transition-colors duration-200"
             >
               (123) 456-7890
             </a>
           </div>
-          
+
           <div class="flex items-start gap-2">
-            <Icon name="mdi:map-marker" class="size-5 text-primary mt-0.5" />
+            <Icon name="mdi:map-marker" class="text-primary mt-0.5 size-5" />
             <span class="text-base-content/80">
               Based in Oslo<br />
               Serving clients worldwide
             </span>
           </div>
         </div>
-        
+
         <div class="mt-6">
-          <a 
-            href="/contact" 
-            class="btn btn-primary btn-sm"
-          >
+          <a href="/contact" class="btn btn-primary btn-sm">
             Book a Free Call
             <Icon name="mdi:arrow-right" class="ml-1 size-4" />
           </a>
@@ -144,17 +143,26 @@ const serviceLinks = [
 
     <!-- Bottom Bar -->
     <div class="divider my-8"></div>
-    
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-base-content/60">
+
+    <div
+      class="text-base-content/60 flex flex-col items-center justify-between gap-4 text-sm sm:flex-row"
+    >
       <div>
-        &copy; {currentYear} {siteTitle}. All rights reserved.
+        &copy; {currentYear}
+        {siteTitle}. All rights reserved.
       </div>
-      
+
       <div class="flex gap-4">
-        <a href="/privacy" class="hover:text-primary transition-colors duration-200">
+        <a
+          href="/privacy"
+          class="hover:text-primary transition-colors duration-200"
+        >
           Privacy Policy
         </a>
-        <a href="/terms" class="hover:text-primary transition-colors duration-200">
+        <a
+          href="/terms"
+          class="hover:text-primary transition-colors duration-200"
+        >
           Terms of Service
         </a>
       </div>

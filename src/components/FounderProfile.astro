@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 interface Props {
   title: string;
@@ -8,24 +8,19 @@ interface Props {
   photoIcon?: string;
 }
 
-const {
-  title,
-  name,
-  role,
-  photoIcon = "mdi:account"
-} = Astro.props;
+const { title, name, role, photoIcon = "mdi:account" } = Astro.props;
 ---
 
-<div class="max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold text-base-content mb-8 text-center">{title}</h2>
+<div class="mx-auto max-w-4xl">
+  <h2 class="text-base-content mb-8 text-center text-3xl font-bold">{title}</h2>
 
-  <div class="card bg-base-100 shadow-xl mx-auto max-w-2xl">
-    <figure class="h-64 bg-base-200 flex items-center justify-center">
+  <div class="card bg-base-100 mx-auto max-w-2xl shadow-xl">
+    <figure class="bg-base-200 flex h-64 items-center justify-center">
       <!-- Placeholder for photo -->
-      <Icon name={photoIcon} class="h-16 w-16 text-secondary" />
+      <Icon name={photoIcon} class="text-secondary h-16 w-16" />
     </figure>
     <div class="card-body">
-      <h3 class="card-title text-xl font-semibold text-base-content">{name}</h3>
+      <h3 class="card-title text-base-content text-xl font-semibold">{name}</h3>
       <p class="text-primary-content mb-4">{role}</p>
       <div class="text-gray-700">
         <slot />

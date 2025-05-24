@@ -18,44 +18,48 @@ const {
   ogType = "website",
   keywords = "digital marketing, social media marketing, content creation, paid advertising, branding, small business marketing, purpose-driven brands, Meta ads, Google ads, marketing strategy",
   noindex = false,
-  structuredData
+  structuredData,
 } = Astro.props;
 
 const siteName = "Tarsier Digital Solutions";
 const siteUrl = Astro.site?.href || "https://tarsierdigital.com";
 const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
-const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+const fullOgImage = ogImage.startsWith("http")
+  ? ogImage
+  : `${siteUrl}${ogImage}`;
 
 // Default structured data for the business
 const defaultStructuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Tarsier Digital Solutions",
-  "description": "Professional digital marketing services helping purpose-driven brands with strategy, content creation, paid advertising, and branding.",
-  "url": siteUrl,
-  "telephone": "+1-XXX-XXX-XXXX",
-  "email": "hello@tarsierdigital.com",
-  "address": {
+  name: "Tarsier Digital Solutions",
+  description:
+    "Professional digital marketing services helping purpose-driven brands with strategy, content creation, paid advertising, and branding.",
+  url: siteUrl,
+  telephone: "+1-XXX-XXX-XXXX",
+  email: "hello@tarsierdigital.com",
+  address: {
     "@type": "PostalAddress",
-    "addressCountry": "US"
+    addressCountry: "US",
   },
-  "founder": {
+  founder: {
     "@type": "Person",
-    "name": "Camille Nicole",
-    "jobTitle": "Digital Marketing Specialist",
-    "description": "Former educator turned digital marketer specializing in helping purpose-driven brands tell their story."
+    name: "Camille Nicole",
+    jobTitle: "Digital Marketing Specialist",
+    description:
+      "Former educator turned digital marketer specializing in helping purpose-driven brands tell their story.",
   },
-  "serviceType": [
+  serviceType: [
     "Digital Marketing Strategy",
     "Social Media Marketing",
     "Content Creation",
     "Paid Advertising",
     "Brand Development",
     "Meta Advertising",
-    "Google Advertising"
+    "Google Advertising",
   ],
-  "areaServed": "Worldwide",
-  "image": fullOgImage
+  areaServed: "Worldwide",
+  image: fullOgImage,
 };
 
 const finalStructuredData = structuredData || defaultStructuredData;
@@ -93,8 +97,7 @@ const finalStructuredData = structuredData || defaultStructuredData;
 <meta name="rating" content="general" />
 
 <!-- Structured Data -->
-<script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)} />
-
-<!-- Preconnect to external domains for performance -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(finalStructuredData)}
+/>

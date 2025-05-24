@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 interface ValueItem {
   title: string;
@@ -15,22 +15,31 @@ interface Props {
 const { title, values = [], fullWidth = false } = Astro.props;
 ---
 
-<div class={`card bg-base-100 shadow-xl ${fullWidth ? 'w-full' : ''}`}>
+<div class={`card bg-base-100 shadow-xl ${fullWidth ? "w-full" : ""}`}>
   <div class="card-body">
-    <h3 class="card-title text-xl font-semibold text-primary-content">{title}</h3>
-    {values.length > 0 ? (
-      <ul class="space-y-4 text-gray-700">
-        {values.map((value) => (
-          <li class="flex items-start">
-            <Icon name="mdi:check" class="text-primary-content mr-2 flex-shrink-0 h-4 w-4" />
-            <span><strong>{value.title}:</strong> {value.description}</span>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <div class="text-gray-700">
-        <slot />
-      </div>
-    )}
+    <h3 class="card-title text-primary-content text-xl font-semibold">
+      {title}
+    </h3>
+    {
+      values.length > 0 ? (
+        <ul class="space-y-4 text-gray-700">
+          {values.map((value) => (
+            <li class="flex items-start">
+              <Icon
+                name="mdi:check"
+                class="text-primary-content mr-2 h-4 w-4 flex-shrink-0"
+              />
+              <span>
+                <strong>{value.title}:</strong> {value.description}
+              </span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="text-gray-700">
+          <slot />
+        </div>
+      )
+    }
   </div>
 </div>

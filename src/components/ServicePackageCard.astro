@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 interface Feature {
   text: string;
@@ -23,41 +23,63 @@ const {
   features,
   popular = false,
   ctaText = "Book Now",
-  ctaLink = "/contact"
+  ctaLink = "/contact",
 } = Astro.props;
 ---
 
-<div class={`card h-full ${popular ? 'bg-primary/5 shadow-xl border-2 border-primary' : 'bg-base-100 shadow-md border border-base-300'}`}>
-  {popular && (
-    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-      <div class="badge badge-primary badge-lg font-semibold">Most Popular</div>
-    </div>
-  )}
+<div
+  class={`card h-full ${popular ? "bg-primary/5 shadow-xl border-2 border-primary" : "bg-base-100 shadow-md border border-base-300"}`}
+>
+  {
+    popular && (
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 transform">
+        <div class="badge badge-primary badge-lg font-semibold">
+          Most Popular
+        </div>
+      </div>
+    )
+  }
   <div class="card-body">
-    <h2 class="card-title text-center justify-center text-xl font-bold">{title}</h2>
-    <div class={`mt-2 mb-4 text-center ${popular ? 'text-primary-content' : ''}`}>
+    <h2 class="card-title justify-center text-center text-xl font-bold">
+      {title}
+    </h2>
+    <div
+      class={`mt-2 mb-4 text-center ${popular ? "text-primary-content" : ""}`}
+    >
       <p class="text-3xl font-bold">{price}</p>
       <p class="text-sm opacity-75">{period}</p>
     </div>
     <div class="divider my-1"></div>
-    <ul class="space-y-3 flex-grow">
-      {features.map((feature) => (
-        <li class="flex items-start">
-          {feature.included ? (
-            <Icon name="mdi:check-circle" class="text-success mr-2 flex-shrink-0 h-5 w-5 mt-0.5" />
-          ) : (
-            <Icon name="mdi:close-circle" class="text-error/50 mr-2 flex-shrink-0 h-5 w-5 mt-0.5" />
-          )}
-          <span class={feature.included ? 'text-base-content' : 'text-base-content/50'}>
-            {feature.text}
-          </span>
-        </li>
-      ))}
+    <ul class="flex-grow space-y-3">
+      {
+        features.map((feature) => (
+          <li class="flex items-start">
+            {feature.included ? (
+              <Icon
+                name="mdi:check-circle"
+                class="text-success mt-0.5 mr-2 h-5 w-5 flex-shrink-0"
+              />
+            ) : (
+              <Icon
+                name="mdi:close-circle"
+                class="text-error/50 mt-0.5 mr-2 h-5 w-5 flex-shrink-0"
+              />
+            )}
+            <span
+              class={
+                feature.included ? "text-base-content" : "text-base-content/50"
+              }
+            >
+              {feature.text}
+            </span>
+          </li>
+        ))
+      }
     </ul>
-    <div class="card-actions justify-center mt-6">
+    <div class="card-actions mt-6 justify-center">
       <a
         href={ctaLink}
-        class={`btn ${popular ? 'btn-primary' : 'btn-outline btn-primary'} w-full`}
+        class={`btn ${popular ? "btn-primary" : "btn-outline btn-primary"} w-full`}
       >
         {ctaText}
       </a>

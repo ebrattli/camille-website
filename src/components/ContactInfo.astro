@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 interface ContactItem {
   icon: string;
@@ -16,46 +16,50 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-  {items.map((item) => (
-    <div class="bg-base-100 rounded-lg shadow-md p-6 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-      <!-- Icon -->
-      <div class="flex justify-center mb-4">
-        <div class="bg-primary/10 p-4 rounded-full text-primary-content">
-          <Icon name={item.icon} class="w-8 h-8" />
-        </div>
-      </div>
-
-      <!-- Title -->
-      <div class="text-center mb-3">
-        <h3 class="font-bold text-lg">{item.title}</h3>
-      </div>
-
-      <!-- Content -->
-      <div class="text-center text-base-content/80 mb-4">
-        {Array.isArray(item.content) ? (
-          <div class="space-y-2">
-            {item.content.map((line) => (
-              <p class="leading-relaxed">{line}</p>
-            ))}
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+  {
+    items.map((item) => (
+      <div class="bg-base-100 transform rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+        {/* Icon */}
+        <div class="mb-4 flex justify-center">
+          <div class="bg-primary/10 text-primary-content rounded-full p-4">
+            <Icon name={item.icon} class="h-8 w-8" />
           </div>
-        ) : (
-          <p class="leading-relaxed">{item.content}</p>
+        </div>
+
+        {/* Title */}
+        <div class="mb-3 text-center">
+          <h3 class="text-lg font-bold">{item.title}</h3>
+        </div>
+
+        {/* Content */}
+        <div class="text-base-content/80 mb-4 text-center">
+          {Array.isArray(item.content) ? (
+            <div class="space-y-2">
+              {item.content.map((line) => (
+                <p class="leading-relaxed">{line}</p>
+              ))}
+            </div>
+          ) : (
+            <p class="leading-relaxed">{item.content}</p>
+          )}
+        </div>
+
+        {/* Link (if available) */}
+        {item.link && (
+          <div class="mt-2 text-center">
+            <a
+              href={item.link}
+              class="text-primary-content inline-flex items-center justify-center gap-1 font-medium break-words hover:underline"
+            >
+              <span class="overflow-hidden break-all">
+                {item.linkText || item.link}
+              </span>
+              <Icon name="mdi:arrow-right" class="h-4 w-4 flex-shrink-0" />
+            </a>
+          </div>
         )}
       </div>
-
-      <!-- Link (if available) -->
-      {item.link && (
-        <div class="text-center mt-2">
-          <a
-            href={item.link}
-            class="text-primary-content hover:underline font-medium inline-flex items-center justify-center gap-1 break-words"
-          >
-            <span class="break-all overflow-hidden">{item.linkText || item.link}</span>
-            <Icon name="mdi:arrow-right" class="w-4 h-4 flex-shrink-0" />
-          </a>
-        </div>
-      )}
-    </div>
-  ))}
+    ))
+  }
 </div>

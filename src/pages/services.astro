@@ -1,100 +1,107 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import ServicePackageCard from '../components/ServicePackageCard.astro';
-import ProcessSteps from '../components/ProcessSteps.astro';
-import FaqAccordion from '../components/FaqAccordion.astro';
-import CallToAction from '../components/CallToAction.astro';
-import { Icon } from 'astro-icon/components';
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import ServicePackageCard from "../components/ServicePackageCard.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import CallToAction from "../components/CallToAction.astro";
+import { Icon } from "astro-icon/components";
 
-const seoTitle = "Digital Marketing Services & Pricing - Social Media Management";
-const seoDescription = "Professional social media marketing services and packages for businesses. Content creation, community management, growth strategy, and performance reporting. Starting at 4,000 NOK/month.";
-const seoKeywords = "social media marketing services, social media management packages, content creation services, digital marketing pricing, Instagram marketing, Facebook marketing, LinkedIn marketing";
+const seoTitle =
+  "Digital Marketing Services & Pricing - Social Media Management";
+const seoDescription =
+  "Professional social media marketing services and packages for businesses. Content creation, community management, growth strategy, and performance reporting. Starting at 4,000 NOK/month.";
+const seoKeywords =
+  "social media marketing services, social media management packages, content creation services, digital marketing pricing, Instagram marketing, Facebook marketing, LinkedIn marketing";
 
 // Structured data for services page
 const servicesStructuredData = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Digital Marketing Services",
-  "description": seoDescription,
-  "provider": {
+  name: "Digital Marketing Services",
+  description: seoDescription,
+  provider: {
     "@type": "Organization",
-    "name": "Tarsier Digital Solutions",
-    "url": "https://tarsierdigital.com"
+    name: "Tarsier Digital Solutions",
+    url: "https://tarsierdigital.com",
   },
-  "areaServed": "Worldwide",
-  "hasOfferCatalog": {
+  areaServed: "Worldwide",
+  hasOfferCatalog: {
     "@type": "OfferCatalog",
-    "name": "Social Media Marketing Packages",
-    "itemListElement": [
+    name: "Social Media Marketing Packages",
+    itemListElement: [
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "Basic Social Media Package",
-          "description": "8 social media posts per month, content creation for 1 platform, monthly performance report"
+          name: "Basic Social Media Package",
+          description:
+            "8 social media posts per month, content creation for 1 platform, monthly performance report",
         },
-        "price": "4000",
-        "priceCurrency": "NOK",
-        "priceSpecification": {
+        price: "4000",
+        priceCurrency: "NOK",
+        priceSpecification: {
           "@type": "UnitPriceSpecification",
-          "price": "4000",
-          "priceCurrency": "NOK",
-          "billingDuration": "P1M"
-        }
+          price: "4000",
+          priceCurrency: "NOK",
+          billingDuration: "P1M",
+        },
       },
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "Standard Social Media Package",
-          "description": "16 social media posts per month, content creation for 2 platforms, bi-weekly performance reports"
+          name: "Standard Social Media Package",
+          description:
+            "16 social media posts per month, content creation for 2 platforms, bi-weekly performance reports",
         },
-        "price": "8000",
-        "priceCurrency": "NOK",
-        "priceSpecification": {
+        price: "8000",
+        priceCurrency: "NOK",
+        priceSpecification: {
           "@type": "UnitPriceSpecification",
-          "price": "8000",
-          "priceCurrency": "NOK",
-          "billingDuration": "P1M"
-        }
+          price: "8000",
+          priceCurrency: "NOK",
+          billingDuration: "P1M",
+        },
       },
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "Premium Social Media Package",
-          "description": "24 social media posts per month, content creation for 3 platforms, weekly performance reports"
+          name: "Premium Social Media Package",
+          description:
+            "24 social media posts per month, content creation for 3 platforms, weekly performance reports",
         },
-        "price": "12000",
-        "priceCurrency": "NOK",
-        "priceSpecification": {
+        price: "12000",
+        priceCurrency: "NOK",
+        priceSpecification: {
           "@type": "UnitPriceSpecification",
-          "price": "12000",
-          "priceCurrency": "NOK",
-          "billingDuration": "P1M"
-        }
+          price: "12000",
+          priceCurrency: "NOK",
+          billingDuration: "P1M",
+        },
       },
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "Enterprise Social Media Package",
-          "description": "40 social media posts per month, content creation for all platforms, weekly reports with strategy calls"
+          name: "Enterprise Social Media Package",
+          description:
+            "40 social media posts per month, content creation for all platforms, weekly reports with strategy calls",
         },
-        "price": "20000",
-        "priceCurrency": "NOK",
-        "priceSpecification": {
+        price: "20000",
+        priceCurrency: "NOK",
+        priceSpecification: {
           "@type": "UnitPriceSpecification",
-          "price": "20000",
-          "priceCurrency": "NOK",
-          "billingDuration": "P1M"
-        }
-      }
-    ]
+          price: "20000",
+          priceCurrency: "NOK",
+          billingDuration: "P1M",
+        },
+      },
+    ],
   },
-  "serviceType": "Digital Marketing",
-  "category": "Social Media Marketing"
+  serviceType: "Digital Marketing",
+  category: "Social Media Marketing",
 };
 
 // Define packages
@@ -111,8 +118,8 @@ const packages = [
       { text: "Engagement monitoring", included: false },
       { text: "Competitor analysis", included: false },
       { text: "Hashtag strategy", included: false },
-      { text: "Influencer outreach", included: false }
-    ]
+      { text: "Influencer outreach", included: false },
+    ],
   },
   {
     title: "Standard",
@@ -126,8 +133,8 @@ const packages = [
       { text: "Engagement monitoring and response", included: true },
       { text: "Competitor analysis", included: false },
       { text: "Hashtag strategy", included: false },
-      { text: "Influencer outreach", included: false }
-    ]
+      { text: "Influencer outreach", included: false },
+    ],
   },
   {
     title: "Premium",
@@ -141,8 +148,8 @@ const packages = [
       { text: "Engagement monitoring and response", included: true },
       { text: "Competitor analysis", included: true },
       { text: "Hashtag strategy", included: true },
-      { text: "Influencer outreach", included: false }
-    ]
+      { text: "Influencer outreach", included: false },
+    ],
   },
   {
     title: "Enterprise",
@@ -156,53 +163,62 @@ const packages = [
       { text: "Priority engagement management", included: true },
       { text: "In-depth competitor analysis", included: true },
       { text: "Custom hashtag strategy", included: true },
-      { text: "Influencer outreach", included: true }
-    ]
-  }
+      { text: "Influencer outreach", included: true },
+    ],
+  },
 ];
 
 // Define process steps
 const processSteps = [
   {
     title: "Consultation",
-    description: "We start with a thorough consultation to understand your business, goals, target audience, and current social media presence."
+    description:
+      "We start with a thorough consultation to understand your business, goals, target audience, and current social media presence.",
   },
   {
     title: "Strategy",
-    description: "Based on our consultation, I develop a customized social media strategy tailored to your specific needs and objectives."
+    description:
+      "Based on our consultation, I develop a customized social media strategy tailored to your specific needs and objectives.",
   },
   {
     title: "Implementation",
-    description: "Once the strategy is approved, I begin creating and scheduling content, engaging with your audience, and implementing growth tactics."
+    description:
+      "Once the strategy is approved, I begin creating and scheduling content, engaging with your audience, and implementing growth tactics.",
   },
   {
     title: "Analysis & Optimization",
-    description: "I continuously monitor performance, provide regular reports, and optimize the strategy based on data and results."
-  }
+    description:
+      "I continuously monitor performance, provide regular reports, and optimize the strategy based on data and results.",
+  },
 ];
 
 // Define FAQs
 const faqs = [
   {
     question: "Which social media platforms do you work with?",
-    answer: "I specialize in Instagram, Facebook, LinkedIn, Twitter, TikTok, and Pinterest. The platforms we focus on will depend on your business goals and target audience."
+    answer:
+      "I specialize in Instagram, Facebook, LinkedIn, Twitter, TikTok, and Pinterest. The platforms we focus on will depend on your business goals and target audience.",
   },
   {
     question: "Do you create the content or do I need to provide it?",
-    answer: "I create all the content for your social media channels, including graphics, captions, and hashtags. You're welcome to provide input and brand assets, but I handle the creative process."
+    answer:
+      "I create all the content for your social media channels, including graphics, captions, and hashtags. You're welcome to provide input and brand assets, but I handle the creative process.",
   },
   {
     question: "How long does it take to see results?",
-    answer: "Social media marketing is a long-term strategy. While you may see engagement improvements within the first month, significant growth in followers and business results typically takes 3-6 months of consistent effort."
+    answer:
+      "Social media marketing is a long-term strategy. While you may see engagement improvements within the first month, significant growth in followers and business results typically takes 3-6 months of consistent effort.",
   },
   {
     question: "Can I upgrade or downgrade my package?",
-    answer: "Yes, you can change your package at any time with 30 days' notice. I'm flexible and understand that your needs may change as your business grows."
+    answer:
+      "Yes, you can change your package at any time with 30 days' notice. I'm flexible and understand that your needs may change as your business grows.",
   },
   {
     question: "Do you offer one-time services or only monthly packages?",
-    answer: "While I primarily offer monthly packages for ongoing social media management, I also provide one-time services such as social media audits, strategy development, and content creation workshops. Contact me for custom quotes."
-  }
+    answer:
+      "While I primarily offer monthly packages for ongoing social media management, I also provide one-time services such as social media audits, strategy development, and content creation workshops. Contact me for custom quotes.",
+  },
 ];
 ---
 
@@ -221,62 +237,78 @@ const faqs = [
     />
 
     <!-- Introduction Section -->
-    <section class="max-w-4xl mx-auto text-center">
-      <h2 class="text-2xl font-bold mb-4">Elevate Your Social Media Presence</h2>
+    <section class="mx-auto max-w-4xl text-center">
+      <h2 class="mb-4 text-2xl font-bold">
+        Elevate Your Social Media Presence
+      </h2>
       <p class="mb-4">
-        In today's digital landscape, a strong social media presence is essential for business growth.
-        I offer comprehensive social media marketing services designed to increase your brand visibility,
-        engage your target audience, and drive meaningful results.
+        In today's digital landscape, a strong social media presence is
+        essential for business growth. I offer comprehensive social media
+        marketing services designed to increase your brand visibility, engage
+        your target audience, and drive meaningful results.
       </p>
       <p>
-        Whether you're just starting out or looking to take your existing social media to the next level,
-        I have a package that fits your needs and budget.
+        Whether you're just starting out or looking to take your existing social
+        media to the next level, I have a package that fits your needs and
+        budget.
       </p>
     </section>
 
     <!-- Services Overview -->
-    <section class="bg-base-200 py-12 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl font-bold text-center mb-8">What I Offer</h2>
+    <section class="bg-base-200 px-4 py-12">
+      <div class="mx-auto max-w-6xl">
+        <h2 class="mb-8 text-center text-2xl font-bold">What I Offer</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div class="card bg-base-100 shadow-md">
             <div class="card-body items-center text-center">
               <div class="text-primary mb-2">
-                <Icon name="mdi:pencil" class="w-12 h-12" />
+                <Icon name="mdi:pencil" class="h-12 w-12" />
               </div>
               <h3 class="card-title">Content Creation</h3>
-              <p class="text-base-content/70">Engaging posts that connect with your audience and reflect your brand voice</p>
+              <p class="text-base-content/70">
+                Engaging posts that connect with your audience and reflect your
+                brand voice
+              </p>
             </div>
           </div>
 
           <div class="card bg-base-100 shadow-md">
             <div class="card-body items-center text-center">
               <div class="text-primary mb-2">
-                <Icon name="mdi:account-group" class="w-12 h-12" />
+                <Icon name="mdi:account-group" class="h-12 w-12" />
               </div>
               <h3 class="card-title">Community Management</h3>
-              <p class="text-base-content/70">Building loyal followers through consistent engagement and relationship building</p>
+              <p class="text-base-content/70">
+                Building loyal followers through consistent engagement and
+                relationship building
+              </p>
             </div>
           </div>
 
           <div class="card bg-base-100 shadow-md">
             <div class="card-body items-center text-center">
               <div class="text-primary mb-2">
-                <Icon name="mdi:chart-line" class="w-12 h-12" />
+                <Icon name="mdi:chart-line" class="h-12 w-12" />
               </div>
               <h3 class="card-title">Growth Strategy</h3>
-              <p class="text-base-content/70">Data-driven approaches to expand your reach and increase your following</p>
+              <p class="text-base-content/70">
+                Data-driven approaches to expand your reach and increase your
+                following
+              </p>
             </div>
           </div>
 
           <div class="card bg-base-100 shadow-md">
             <div class="card-body items-center text-center">
               <div class="text-primary mb-2">
-                <Icon name="mdi:file-document-edit" class="w-12 h-12" />
+                <Icon name="mdi:file-document-edit" class="h-12 w-12" />
               </div>
               <h3 class="card-title">Performance Reports</h3>
-              <p class="text-base-content/70">Transparent results with detailed analytics and actionable insights</p>
+              <p class="text-base-content/70">
+                Transparent results with detailed analytics and actionable
+                insights
+              </p>
             </div>
           </div>
         </div>
@@ -284,35 +316,40 @@ const faqs = [
     </section>
 
     <!-- Packages Section -->
-    <section class="py-12 bg-base-100 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px]">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl font-bold text-center mb-10">Social Media Marketing Packages</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
-          {packages.map((pkg) => (
-            <ServicePackageCard
-              title={pkg.title}
-              price={pkg.price}
-              features={pkg.features}
-              popular={pkg.popular}
-            />
-          ))}
+    <section
+      class="bg-base-100 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] py-12"
+    >
+      <div class="mx-auto max-w-6xl">
+        <h2 class="mb-10 text-center text-2xl font-bold">
+          Social Media Marketing Packages
+        </h2>
+        <div class="grid grid-cols-1 gap-8 px-4 md:grid-cols-2 lg:grid-cols-4">
+          {
+            packages.map((pkg) => (
+              <ServicePackageCard
+                title={pkg.title}
+                price={pkg.price}
+                features={pkg.features}
+                popular={pkg.popular}
+              />
+            ))
+          }
         </div>
-        <p class="text-center mt-10 text-sm text-base-content/60 max-w-2xl mx-auto">
-          All packages require a minimum 3-month commitment. Prices are subject to change.
-          Custom packages are available upon request.
+        <p
+          class="text-base-content/60 mx-auto mt-10 max-w-2xl text-center text-sm"
+        >
+          All packages require a minimum 3-month commitment. Prices are subject
+          to change. Custom packages are available upon request.
         </p>
       </div>
     </section>
 
     <!-- Process Section -->
-    <ProcessSteps
-      title="My Process"
-      steps={processSteps}
-    />
+    <ProcessSteps title="My Process" steps={processSteps} />
 
     <!-- FAQ Section -->
-    <section class="py-12 px-4 bg-base-200">
-      <div class="max-w-6xl mx-auto">
+    <section class="bg-base-200 px-4 py-12">
+      <div class="mx-auto max-w-6xl">
         <FaqAccordion
           title="Frequently Asked Questions"
           items={faqs}
@@ -327,7 +364,8 @@ const faqs = [
       buttonText="Book a Free Consultation"
       buttonLink="/contact"
     >
-      Let's discuss how I can help you achieve your social media goals and take your online presence to the next level.
+      Let's discuss how I can help you achieve your social media goals and take
+      your online presence to the next level.
     </CallToAction>
   </div>
 </Layout>

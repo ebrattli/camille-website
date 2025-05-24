@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 interface Props {
   title: string;
@@ -13,24 +13,28 @@ const {
   title,
   imagePlaceholder = {
     icon: "mdi:image",
-    text: "Image placeholder"
-  }
+    text: "Image placeholder",
+  },
 } = Astro.props;
 ---
 
-<div class="card bg-base-100 shadow-xl max-w-4xl mx-auto">
+<div class="card bg-base-100 mx-auto max-w-4xl shadow-xl">
   <div class="card-body">
-    <div class="grid md:grid-cols-2 gap-8 items-center">
+    <div class="grid items-center gap-8 md:grid-cols-2">
       <div>
-        <h2 class="card-title text-3xl font-bold text-base-content mb-4">{title}</h2>
+        <h2 class="card-title text-base-content mb-4 text-3xl font-bold">
+          {title}
+        </h2>
         <div class="prose text-gray-700">
           <slot />
         </div>
       </div>
-      <div class="relative h-64 md:h-auto rounded-lg overflow-hidden bg-base-200 flex items-center justify-center">
+      <div
+        class="bg-base-200 relative flex h-64 items-center justify-center overflow-hidden rounded-lg md:h-auto"
+      >
         <!-- Placeholder for image -->
-        <div class="text-secondary text-center p-8">
-          <Icon name={imagePlaceholder.icon} class="h-16 w-16 mx-auto mb-4" />
+        <div class="text-secondary p-8 text-center">
+          <Icon name={imagePlaceholder.icon} class="mx-auto mb-4 h-16 w-16" />
           <p>{imagePlaceholder.text}</p>
         </div>
       </div>

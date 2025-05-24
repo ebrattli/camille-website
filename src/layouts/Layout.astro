@@ -23,7 +23,7 @@ const {
   ogType,
   keywords,
   noindex,
-  structuredData
+  structuredData,
 } = Astro.props;
 ---
 
@@ -36,12 +36,8 @@ const {
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#dc2626" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Performance optimizations -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <SEO 
+
+    <SEO
       title={title}
       description={description}
       ogImage={ogImage}
