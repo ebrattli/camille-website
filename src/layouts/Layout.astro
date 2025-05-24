@@ -1,18 +1,29 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import SEO from "../components/SEO.astro";
 import "../styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
   siteTitle?: string;
+  ogImage?: string;
+  ogType?: string;
+  keywords?: string;
+  noindex?: boolean;
+  structuredData?: Record<string, any>;
 }
 
 const {
   title,
-  description = "Camille's Business - Professional services",
+  description = "Professional digital marketing services helping purpose-driven brands with strategy, content creation, paid advertising, and branding. Expert social media marketing and Meta/Google ads.",
   siteTitle = "Tarsier Digital",
+  ogImage,
+  ogType,
+  keywords,
+  noindex,
+  structuredData
 } = Astro.props;
 ---
 
@@ -22,9 +33,23 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#dc2626" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <title>{title}</title>
+    
+    <!-- Performance optimizations -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <SEO 
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      ogType={ogType}
+      keywords={keywords}
+      noindex={noindex}
+      structuredData={structuredData}
+    />
   </head>
   <body class="bg-base-100 min-h-screen">
     <Header siteTitle={siteTitle} />

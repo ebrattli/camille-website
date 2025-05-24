@@ -9,16 +9,34 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://tarsierdigital.com',
+  
   vite: {
     plugins: [tailwindcss()]
   },
 
   integrations: [
-    sitemap(),
+    sitemap({
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
+      entryLimit: 10000,
+    }),
     icon({
       include: {
         mdi: ["*"] // Include all icons from the MDI icon set
       }
     })
-  ]
+  ],
+
+  // SEO and performance optimizations
+  build: {
+    inlineStylesheets: 'auto',
+  },
+
+  compressHTML: true,
+
+  experimental: {
+    clientPrerender: true,
+  }
 });

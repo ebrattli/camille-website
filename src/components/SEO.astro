@@ -1,0 +1,100 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  keywords?: string;
+  noindex?: boolean;
+  structuredData?: Record<string, any>;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage = "/images/og-default.jpg",
+  ogType = "website",
+  keywords = "digital marketing, social media marketing, content creation, paid advertising, branding, small business marketing, purpose-driven brands, Meta ads, Google ads, marketing strategy",
+  noindex = false,
+  structuredData
+} = Astro.props;
+
+const siteName = "Tarsier Digital Solutions";
+const siteUrl = Astro.site?.href || "https://tarsierdigital.com";
+const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+// Default structured data for the business
+const defaultStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tarsier Digital Solutions",
+  "description": "Professional digital marketing services helping purpose-driven brands with strategy, content creation, paid advertising, and branding.",
+  "url": siteUrl,
+  "telephone": "+1-XXX-XXX-XXXX",
+  "email": "hello@tarsierdigital.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "US"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Camille Nicole",
+    "jobTitle": "Digital Marketing Specialist",
+    "description": "Former educator turned digital marketer specializing in helping purpose-driven brands tell their story."
+  },
+  "serviceType": [
+    "Digital Marketing Strategy",
+    "Social Media Marketing",
+    "Content Creation",
+    "Paid Advertising",
+    "Brand Development",
+    "Meta Advertising",
+    "Google Advertising"
+  ],
+  "areaServed": "Worldwide",
+  "image": fullOgImage
+};
+
+const finalStructuredData = structuredData || defaultStructuredData;
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<link rel="canonical" href={canonical} />
+
+<!-- Robots -->
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullOgImage} />
+<meta property="og:site_name" content={siteName} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonical} />
+<meta property="twitter:title" content={fullTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={fullOgImage} />
+
+<!-- Additional SEO Meta Tags -->
+<meta name="author" content="Camille Nicole" />
+<meta name="language" content="en" />
+<meta name="revisit-after" content="7 days" />
+<meta name="rating" content="general" />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)} />
+
+<!-- Preconnect to external domains for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
