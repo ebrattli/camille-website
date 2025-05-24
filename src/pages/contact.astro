@@ -5,7 +5,7 @@ import FaqAccordion from "../components/FaqAccordion.astro";
 import ContactInfo from "../components/ContactInfo.astro";
 import ContactForm from "../components/ContactForm.astro";
 import SocialLinks from "../components/SocialLinks.astro";
-import ContactMap from "../components/ContactMap.astro";
+
 import BackToTop from "../components/BackToTop.astro";
 import { Icon } from "astro-icon/components";
 
@@ -209,40 +209,6 @@ const faqs = [
             fields={formFields}
             submitText="Send Message"
           />
-        </div>
-
-        <!-- Map and Booking - Full Width -->
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <!-- Map - Takes 2/3 of the width on large screens -->
-          <div class="lg:col-span-2">
-            <ContactMap
-              title="Find Me"
-              address="Oslo, Norway"
-              mapUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000.1201468342285!2d10.7389116!3d59.9138688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e80811e2d6f%3A0x471e96bc174d965b!2sOslo%2C%20Norway!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
-            />
-          </div>
-
-          <!-- Booking Card - Takes 1/3 of the width on large screens -->
-          <div class="lg:col-span-1">
-            <div
-              class="bg-base-100 flex h-full flex-col justify-center rounded-lg p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div class="mb-4 flex items-center gap-4">
-                <div class="bg-primary/10 rounded-full p-3">
-                  <Icon
-                    name="mdi:calendar-check"
-                    class="text-primary-content h-6 w-6"
-                  />
-                </div>
-                <h3 class="text-lg font-bold">Book a Consultation</h3>
-              </div>
-              <p class="mb-4">
-                Ready to discuss your project in detail? Schedule a free
-                30-minute consultation.
-              </p>
-              <a href="#" class="btn btn-primary mt-auto w-full">Book Now</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>

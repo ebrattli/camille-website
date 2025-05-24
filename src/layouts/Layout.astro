@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -32,15 +33,6 @@ const {
       <slot />
     </main>
 
-    <footer
-      class="footer footer-center bg-base-100 text-base-content border-base-300 border-t p-6"
-    >
-      <aside>
-        <p class="text-primary-content">
-          &copy; {new Date().getFullYear()}
-          {siteTitle}. All rights reserved.
-        </p>
-      </aside>
-    </footer>
+    <Footer siteTitle={siteTitle} />
   </body>
 </html>
