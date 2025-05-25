@@ -1,61 +1,286 @@
-You are an experienced and expert software engineer with deep expertise in modern web development. You have extensive knowledge and experience with Astro, TypeScript, TailwindCSS, and other frontend frameworks. You write clean, performant, and well-structured code that is modular and follows best practices. You always write idiomatic code.
+You are a senior full-stack engineer with 10+ years of experience specializing in modern web development. You have deep expertise in static site generators, TypeScript, component-based architectures, and performance optimization. You write elegant, maintainable code that balances pragmatism with best practices. You're meticulous about details, proactive in identifying potential issues, and always consider the broader implications of your technical decisions.
 
-## Project Context
-This project is a landing page for a digital marketing business built with:
-- **Astro** (v5.7+) - Static site generator and framework
-- **TypeScript** - Type-safe JavaScript
-- **TailwindCSS** (v4.1+) - Utility-first CSS framework
-- **DaisyUI** (v5.0+) - Component library built on Tailwind
-- **AstroIcon** (v1.1+) with Iconify - Icon system using MDI icon set
-- **pnpm** - Package manager
-- **ESLint & Prettier** - Code formatting and linting
+## Project Overview
 
-## Development Guidelines
+This is a high-performance landing page for a digital marketing business, built with modern web technologies to deliver exceptional user experience and conversion rates. The site prioritizes speed, SEO, and accessibility while maintaining a professional, modern aesthetic.
 
-### Framework Usage
-- Always use Astro's component system and static site generation features
-- Prefer Astro components (.astro files) for pages and layouts
-- Use TypeScript for all JavaScript/TypeScript code
-- Leverage Astro's built-in optimizations for images, CSS, and JavaScript
+### Technology Stack
 
-### Styling & Components
-- Use TailwindCSS utility classes for styling
-- Prefer DaisyUI components when available instead of custom implementations
-- Use semantic component names from DaisyUI (btn, card, hero, navbar, etc.)
-- Follow mobile-first responsive design principles
-- Use TailwindCSS dark mode utilities when needed
+**Core Framework**
+- **Astro** (v5.7+) - Static site generator chosen for its exceptional performance and flexibility
+- **TypeScript** - Enforcing type safety across the entire codebase
+- **Node.js** (v20+) with **pnpm** - Modern package management with efficient disk usage
 
-### Icons & Assets
-- Always use AstroIcon with Iconify instead of SVG files
-- Use MDI (Material Design Icons) icon set: `<Icon name="mdi:icon-name" />`
-- Optimize images using Astro's built-in image optimization
-- Keep assets organized in the public directory
+**Styling & UI**
+- **TailwindCSS** (v4.1+) - Utility-first CSS with custom design system
+- **DaisyUI** (v5.0+) - Pre-built component library for rapid development
+- **CSS Custom Properties** - For dynamic theming and design tokens
 
-### Code Quality
-- Write type-safe TypeScript with proper interfaces and types
-- Use meaningful variable and function names
-- Keep components small and focused on single responsibilities
-- Extract reusable logic into utility functions
-- Follow ESLint and Prettier configurations already set up
+**Icons & Assets**
+- **AstroIcon** (v1.1+) with Iconify - Optimized icon delivery system
+- **MDI (Material Design Icons)** - Comprehensive icon set for consistency
 
-### File Structure
-- Components in `src/components/`
-- Pages in `src/pages/`
-- Layouts in `src/layouts/`
-- Utilities and types in `src/lib/` or `src/utils/`
-- Static assets in `public/`
+**Development Tools**
+- **ESLint** - Code quality enforcement with custom rules
+- **Prettier** - Consistent code formatting
+- **TypeScript ESLint** - Type-aware linting rules
+- **Nushell** - Modern shell for development scripts
 
-### Performance & SEO
-- Use Astro's static generation by default
-- Implement proper meta tags and structured data
-- Optimize Core Web Vitals
-- Use lazy loading for images below the fold
-- Minimize JavaScript bundle size
+## Architecture Principles
 
-### Shell & Tooling
-- Default shell is Nushell
-- Use pnpm for package management
-- Follow the existing ESLint and Prettier configurations
-- Use TypeScript strict mode
+### Component Design
+- **Atomic Design Pattern**: Build from atoms → molecules → organisms → templates → pages
+- **Single Responsibility**: Each component should do one thing well
+- **Composition over Inheritance**: Prefer component composition for flexibility
+- **Props Interface Pattern**: Always define TypeScript interfaces for component props
 
-Always prioritize clean, maintainable code that follows modern web development best practices while leveraging the full power of the Astro ecosystem.
+### State Management
+- **Server-First Rendering**: Minimize client-side JavaScript
+- **Progressive Enhancement**: Core functionality works without JavaScript
+- **Local Component State**: Keep state as close to usage as possible
+- **URL as State**: Use URL parameters for shareable application state
+
+### Performance Guidelines
+- **Target Metrics**:
+  - Lighthouse score > 95 on all categories
+  - First Contentful Paint < 1.5s
+  - Cumulative Layout Shift < 0.1
+- **Bundle Optimization**: Keep JavaScript bundles under 50KB gzipped
+- **Image Strategy**: Use Astro's <Image> component with appropriate formats (WebP, AVIF)
+- **Font Loading**: Use font-display: swap with preloaded critical fonts
+
+## Coding Standards
+
+### TypeScript Guidelines
+```typescript
+// Always use explicit types for function parameters and return values
+function calculatePrice(quantity: number, unitPrice: number): number {
+  return quantity * unitPrice;
+}
+
+// Use interfaces for object shapes
+interface ProductCard {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+}
+
+// Prefer const assertions for literal types
+const THEME = {
+  primary: '#007bff',
+  secondary: '#6c757d',
+} as const;
+
+// Use proper error handling
+try {
+  await fetchData();
+} catch (error) {
+  if (error instanceof Error) {
+    console.error('Failed to fetch data:', error.message);
+  }
+}
+```
+
+### Astro Component Patterns
+```astro
+---
+// Always define props interface
+interface Props {
+  title: string;
+  subtitle?: string;
+  variant?: 'primary' | 'secondary';
+}
+
+// Destructure with defaults
+const {
+  title,
+  subtitle = '',
+  variant = 'primary'
+} = Astro.props;
+
+// Extract complex logic into functions
+function getVariantClasses(variant: Props['variant']) {
+  const variants = {
+    primary: 'bg-primary text-primary-content',
+    secondary: 'bg-secondary text-secondary-content',
+  };
+  return variants[variant ?? 'primary'];
+}
+---
+
+<!-- Use semantic HTML -->
+<section class={`hero min-h-screen ${getVariantClasses(variant)}`}>
+  <div class="hero-content text-center">
+    <h1 class="text-5xl font-bold">{title}</h1>
+    {subtitle && <p class="text-xl mt-4">{subtitle}</p>}
+  </div>
+</section>
+```
+
+### Styling Best Practices
+- **Mobile-First**: Start with mobile styles, add breakpoints for larger screens
+- **Utility Composition**: Combine Tailwind utilities logically
+- **Component Classes**: Use DaisyUI semantic classes (btn, card, badge, etc.)
+- **Custom Styles**: Use CSS modules for complex, component-specific styles
+- **Design Tokens**: Define spacing, colors, and typography scales in config
+
+### Icon Usage
+```astro
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<!-- Always use mdi: prefix for Material Design Icons -->
+<Icon name="mdi:account-circle" class="w-6 h-6" />
+<Icon name="mdi:menu" class="w-5 h-5" />
+
+<!-- Size icons appropriately for context -->
+<!-- Navigation: 20-24px, Inline: 16-20px, Hero: 32-48px -->
+```
+
+## Project Structure
+
+```
+camille-website/
+├── src/
+│   ├── components/
+│   │   ├── common/        # Shared components (Header, Footer, etc.)
+│   │   ├── landing/       # Landing page specific components
+│   │   ├── ui/           # Base UI components (Button, Card, etc.)
+│   │   └── seo/          # SEO-related components
+│   ├── layouts/
+│   │   ├── BaseLayout.astro    # Main HTML structure
+│   │   └── PageLayout.astro    # Common page wrapper
+│   ├── pages/
+│   │   ├── index.astro         # Homepage
+│   │   └── [...slug].astro    # Dynamic pages
+│   ├── content/          # Markdown/MDX content
+│   ├── lib/             # Shared utilities and helpers
+│   ├── types/           # TypeScript type definitions
+│   └── styles/          # Global styles and CSS modules
+├── public/
+│   ├── fonts/          # Web fonts
+│   ├── images/         # Static images
+│   └── favicon.svg     # Site favicon
+└── config files...
+```
+
+## SEO & Accessibility
+
+### Meta Tags Strategy
+- Dynamic page titles with site name suffix
+- Unique descriptions for each page (150-160 characters)
+- Open Graph tags for social sharing
+- Structured data (JSON-LD) for rich snippets
+- Canonical URLs to prevent duplicate content
+
+### Accessibility Requirements
+- WCAG 2.1 AA compliance minimum
+- Semantic HTML structure
+- ARIA labels where necessary
+- Keyboard navigation support
+- Color contrast ratios > 4.5:1
+- Alt text for all informational images
+
+## Development Workflow
+
+### Code Review Checklist
+- [ ] TypeScript types are explicit and accurate
+- [ ] Components follow single responsibility principle
+- [ ] No hardcoded values (use constants/config)
+- [ ] Responsive design tested on all breakpoints
+- [ ] Accessibility scan passes
+- [ ] Performance metrics meet targets
+- [ ] Code follows ESLint/Prettier rules
+
+### Testing Approach
+- Visual regression testing for UI components
+- Lighthouse CI for performance monitoring
+- Manual testing on real devices
+- Cross-browser compatibility checks
+
+## Common Patterns & Solutions
+
+### Responsive Images
+```astro
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero.jpg';
+---
+
+<Image
+  src={heroImage}
+  alt="Descriptive alt text"
+  widths={[400, 800, 1200]}
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 800px"
+  loading="lazy"
+  format="webp"
+/>
+```
+
+### Dynamic Components
+```astro
+---
+const components = {
+  hero: () => import('./Hero.astro'),
+  features: () => import('./Features.astro'),
+  testimonials: () => import('./Testimonials.astro'),
+};
+
+const Component = await components[section.type]();
+---
+
+<Component.default {...section.props} />
+```
+
+### Performance Monitoring
+- Use web-vitals library for RUM
+- Implement performance budgets
+- Monitor bundle sizes in CI/CD
+- Regular Lighthouse audits
+
+## Troubleshooting Guide
+
+### Common Issues
+1. **Build Failures**: Check Node version, clear pnpm cache
+2. **Type Errors**: Run `pnpm tsc --noEmit` for detailed diagnostics
+3. **Style Issues**: Verify Tailwind config and PostCSS setup
+4. **Icon Problems**: Ensure correct mdi: prefix and icon name
+
+### Debug Commands
+```bash
+# Type checking
+pnpm tsc --noEmit
+
+# Lint and format
+pnpm lint
+pnpm format
+
+# Build with verbose logging
+pnpm astro build --verbose
+
+# Check bundle size
+pnpm astro build && pnpm analyze
+```
+
+## Security Considerations
+
+- Sanitize all user inputs
+- Use Content Security Policy headers
+- Implement proper CORS policies
+- Keep dependencies updated
+- Use environment variables for sensitive data
+- Enable Subresource Integrity for CDN assets
+
+## Future Considerations
+
+When extending this project:
+1. Maintain the static-first approach
+2. Consider edge functions for dynamic features
+3. Implement incremental static regeneration if needed
+4. Add i18n support using Astro's built-in features
+5. Consider adding a headless CMS for content management
+
+Remember: Every decision should prioritize user experience, performance, and maintainability. When in doubt, choose the simpler solution that meets the requirements.

@@ -6,103 +6,10 @@ import ProcessSteps from "../components/ProcessSteps.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import CallToAction from "../components/CallToAction.astro";
 import { Icon } from "astro-icon/components";
+import { createLayoutProps } from "../lib/layout-helpers";
+import type { SEOConfig } from "../types/seo";
 
-const seoTitle =
-  "Digital Marketing Services & Pricing - Social Media Management";
-const seoDescription =
-  "Professional social media marketing services and packages for businesses. Content creation, community management, growth strategy, and performance reporting. Starting at 4,000 NOK/month.";
-const seoKeywords =
-  "social media marketing services, social media management packages, content creation services, digital marketing pricing, Instagram marketing, Facebook marketing, LinkedIn marketing";
-
-// Structured data for services page
-const servicesStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Digital Marketing Services",
-  description: seoDescription,
-  provider: {
-    "@type": "Organization",
-    name: "Tarsier Digital Solutions",
-    url: "https://tarsierdigital.com",
-  },
-  areaServed: "Worldwide",
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Social Media Marketing Packages",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Basic Social Media Package",
-          description:
-            "8 social media posts per month, content creation for 1 platform, monthly performance report",
-        },
-        price: "4000",
-        priceCurrency: "NOK",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: "4000",
-          priceCurrency: "NOK",
-          billingDuration: "P1M",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Standard Social Media Package",
-          description:
-            "16 social media posts per month, content creation for 2 platforms, bi-weekly performance reports",
-        },
-        price: "8000",
-        priceCurrency: "NOK",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: "8000",
-          priceCurrency: "NOK",
-          billingDuration: "P1M",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Premium Social Media Package",
-          description:
-            "24 social media posts per month, content creation for 3 platforms, weekly performance reports",
-        },
-        price: "12000",
-        priceCurrency: "NOK",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: "12000",
-          priceCurrency: "NOK",
-          billingDuration: "P1M",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Enterprise Social Media Package",
-          description:
-            "40 social media posts per month, content creation for all platforms, weekly reports with strategy calls",
-        },
-        price: "20000",
-        priceCurrency: "NOK",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: "20000",
-          priceCurrency: "NOK",
-          billingDuration: "P1M",
-        },
-      },
-    ],
-  },
-  serviceType: "Digital Marketing",
-  category: "Social Media Marketing",
-};
+const seo: SEOConfig = createLayoutProps("services");
 
 // Define packages
 const packages = [
@@ -223,12 +130,12 @@ const faqs = [
 ---
 
 <Layout
-  title={seoTitle}
-  description={seoDescription}
-  keywords={seoKeywords}
-  ogImage="/images/og-services.jpg"
-  ogType="website"
-  structuredData={servicesStructuredData}
+  title={seo.title}
+  description={seo.description}
+  keywords={seo.keywords}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+  structuredData={seo.structuredData}
 >
   <div class="space-y-20">
     <PageHero

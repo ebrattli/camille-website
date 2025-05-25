@@ -1,24 +1,28 @@
 ---
+import type { SEOConfig } from '../types/seo';
+import { defaultSeo } from '../config/seo';
+
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   canonical?: string;
   ogImage?: string;
-  ogType?: string;
+  ogType?: SEOConfig['ogType'];
   keywords?: string;
   noindex?: boolean;
   structuredData?: Record<string, any>;
 }
 
+// Merge props with default SEO values
 const {
-  title,
-  description,
+  title = defaultSeo.title,
+  description = defaultSeo.description,
   canonical = Astro.url.href,
-  ogImage = "/images/og-default.jpg",
-  ogType = "website",
-  keywords = "digital marketing, social media marketing, content creation, paid advertising, branding, small business marketing, purpose-driven brands, Meta ads, Google ads, marketing strategy",
+  ogImage = defaultSeo.ogImage || "/images/og-default.jpg",
+  ogType = defaultSeo.ogType || "website",
+  keywords = defaultSeo.keywords || "digital marketing, social media marketing, content creation, paid advertising, branding, small business marketing, purpose-driven brands, Meta ads, Google ads, marketing strategy",
   noindex = false,
-  structuredData,
+  structuredData = defaultSeo.structuredData,
 } = Astro.props;
 
 const siteName = "Tarsier Digital Solutions";
@@ -28,41 +32,17 @@ const fullOgImage = ogImage.startsWith("http")
   ? ogImage
   : `${siteUrl}${ogImage}`;
 
-// Default structured data for the business
-const defaultStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Tarsier Digital Solutions",
-  description:
-    "Professional digital marketing services helping purpose-driven brands with strategy, content creation, paid advertising, and branding.",
+// Use provided structured data or import it from the defaultSeo
+const finalStructuredData = structuredData ? {
+  ...structuredData,
+  // Ensure image is always set for structured data
+  image: structuredData.image || fullOgImage,
+} : {
+  ...defaultSeo.structuredData,
+  // Use the current URL and image
   url: siteUrl,
-  telephone: "+1-XXX-XXX-XXXX",
-  email: "hello@tarsierdigital.com",
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "US",
-  },
-  founder: {
-    "@type": "Person",
-    name: "Camille Nicole",
-    jobTitle: "Digital Marketing Specialist",
-    description:
-      "Former educator turned digital marketer specializing in helping purpose-driven brands tell their story.",
-  },
-  serviceType: [
-    "Digital Marketing Strategy",
-    "Social Media Marketing",
-    "Content Creation",
-    "Paid Advertising",
-    "Brand Development",
-    "Meta Advertising",
-    "Google Advertising",
-  ],
-  areaServed: "Worldwide",
   image: fullOgImage,
 };
-
-const finalStructuredData = structuredData || defaultStructuredData;
 ---
 
 <!-- Primary Meta Tags -->

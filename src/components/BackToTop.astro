@@ -16,7 +16,7 @@ const { showAtPixels = 300 } = Astro.props;
   <Icon name="mdi:arrow-up" class="h-6 w-6" />
 </button>
 
-<script define:vars={{ showAtPixels }}>
+<script is:inline define:vars={{ showAtPixels }}>
   document.addEventListener("DOMContentLoaded", () => {
     const backToTopButton = document.getElementById("back-to-top");
 

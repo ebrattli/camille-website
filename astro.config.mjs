@@ -1,42 +1,41 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from "@tailwindcss/vite";
 
-import sitemap from '@astrojs/sitemap';
+import sitemap from "@astrojs/sitemap";
 
-import icon from 'astro-icon';
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://tarsierdigital.com',
-  
+  site: "https://tarsierdigital.com",
+
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
   integrations: [
     sitemap({
-      changefreq: 'weekly',
+      changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date(),
       entryLimit: 10000,
     }),
     icon({
       include: {
-        mdi: ["*"] // Include all icons from the MDI icon set
-      }
-    })
+        mdi: ["*"], // Include all icons from the MDI icon set
+      },
+    }),
   ],
 
   // SEO and performance optimizations
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: "auto",
   },
 
   compressHTML: true,
 
   experimental: {
     clientPrerender: true,
-  }
+  },
 });
