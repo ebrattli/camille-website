@@ -41,7 +41,7 @@ const checkboxFields = fields.filter((field) => field.type === "checkbox");
   <div class="card-body p-8">
     <h2 class="card-title mb-8 text-2xl">{title}</h2>
 
-    <form id={formId} class="space-y-8">
+    <form id={formId} class="space-y-8" data-form-id={formId}>
       <!-- Regular fields (text, email, tel, select) -->
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
@@ -185,37 +185,41 @@ const checkboxFields = fields.filter((field) => field.type === "checkbox");
   </div>
 </div>
 
-<script define:vars={{ formId }}>
+<script is:inline>
   // Simple form handling script
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById(formId);
-    const successMessage = document.getElementById("form-success");
-    const errorMessage = document.getElementById("form-error");
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get the form ID from data attribute
+    const contactForm = document.querySelector("form[data-form-id]");
+    const formId = contactForm?.getAttribute("data-form-id");
+    var form = document.getElementById(formId);
+    var successMessage = document.getElementById("form-success");
+    var errorMessage = document.getElementById("form-error");
 
     if (form) {
-      form.addEventListener("submit", async (e) => {
+      form.addEventListener("submit", function (e) {
         e.preventDefault();
 
         // Hide any existing messages
-        successMessage?.classList.add("hidden");
-        errorMessage?.classList.add("hidden");
+        if (successMessage) successMessage.classList.add("hidden");
+        if (errorMessage) errorMessage.classList.add("hidden");
 
         // In a real implementation, you would send the form data to a server
         // For now, we'll just simulate a successful submission
-        try {
-          // Simulate form submission delay
-          await new Promise((resolve) => setTimeout(resolve, 1000));
 
-          // Show success message
-          successMessage?.classList.remove("hidden");
+        // Simulate form submission delay
+        setTimeout(function () {
+          try {
+            // Show success message
+            if (successMessage) successMessage.classList.remove("hidden");
 
-          // Reset form
-          form.reset();
-        } catch (error) {
-          // Show error message
-          errorMessage?.classList.remove("hidden");
-          console.error("Form submission error:", error);
-        }
+            // Reset form
+            form.reset();
+          } catch (error) {
+            // Show error message
+            if (errorMessage) errorMessage.classList.remove("hidden");
+            console.error("Form submission error:", error);
+          }
+        }, 1000);
       });
     }
   });

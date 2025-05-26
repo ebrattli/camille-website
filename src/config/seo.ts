@@ -180,9 +180,23 @@ export const pageSeo: Record<string, SEOConfig> = {
   },
 
   // Add other pages as needed
-  // about: { ... },
-  // contact: { ... },
-  // blog: { ... },
+    // about: { ... },
+    // contact: { ... },
+    // blog: { ... },
+  
+    error: {
+      title: "Error | Tarsier Digital Solutions",
+      description: "We apologize for the inconvenience. An error has occurred while loading the page.",
+      keywords: "error, page not found, server error",
+      ogImage: "/images/og-default.jpg",
+      ogType: "website",
+      structuredData: {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: "Error Page | Tarsier Digital Solutions",
+        description: "We apologize for the inconvenience. An error has occurred while loading the page."
+      },
+    },
 };
 
 // Default SEO config for pages that don't have a specific configuration

@@ -6,6 +6,8 @@ import sitemap from "@astrojs/sitemap";
 
 import icon from "astro-icon";
 
+import playformCompress from "@playform/compress";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://tarsierdigital.com",
@@ -26,6 +28,7 @@ export default defineConfig({
         mdi: ["*"], // Include all icons from the MDI icon set
       },
     }),
+    playformCompress(),
   ],
 
   // SEO and performance optimizations
@@ -34,6 +37,9 @@ export default defineConfig({
   },
 
   compressHTML: true,
+  prefetch: {
+    prefetchAll: true,
+  },
 
   experimental: {
     clientPrerender: true,

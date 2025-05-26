@@ -1,13 +1,13 @@
 ---
-import type { SEOConfig } from '../types/seo';
-import { defaultSeo } from '../config/seo';
+import type { SEOConfig } from "../types/seo";
+import { defaultSeo } from "../config/seo";
 
 interface Props {
   title?: string;
   description?: string;
   canonical?: string;
   ogImage?: string;
-  ogType?: SEOConfig['ogType'];
+  ogType?: SEOConfig["ogType"];
   keywords?: string;
   noindex?: boolean;
   structuredData?: Record<string, any>;
@@ -20,7 +20,8 @@ const {
   canonical = Astro.url.href,
   ogImage = defaultSeo.ogImage || "/images/og-default.jpg",
   ogType = defaultSeo.ogType || "website",
-  keywords = defaultSeo.keywords || "digital marketing, social media marketing, content creation, paid advertising, branding, small business marketing, purpose-driven brands, Meta ads, Google ads, marketing strategy",
+  keywords = defaultSeo.keywords ||
+    "digital marketing, social media marketing, content creation, paid advertising, branding, small business marketing, purpose-driven brands, Meta ads, Google ads, marketing strategy",
   noindex = false,
   structuredData = defaultSeo.structuredData,
 } = Astro.props;
@@ -33,16 +34,18 @@ const fullOgImage = ogImage.startsWith("http")
   : `${siteUrl}${ogImage}`;
 
 // Use provided structured data or import it from the defaultSeo
-const finalStructuredData = structuredData ? {
-  ...structuredData,
-  // Ensure image is always set for structured data
-  image: structuredData.image || fullOgImage,
-} : {
-  ...defaultSeo.structuredData,
-  // Use the current URL and image
-  url: siteUrl,
-  image: fullOgImage,
-};
+const finalStructuredData = structuredData
+  ? {
+      ...structuredData,
+      // Ensure image is always set for structured data
+      image: structuredData.image || fullOgImage,
+    }
+  : {
+      ...defaultSeo.structuredData,
+      // Use the current URL and image
+      url: siteUrl,
+      image: fullOgImage,
+    };
 ---
 
 <!-- Primary Meta Tags -->
@@ -78,6 +81,7 @@ const finalStructuredData = structuredData ? {
 
 <!-- Structured Data -->
 <script
+  is:inline
   type="application/ld+json"
   set:html={JSON.stringify(finalStructuredData)}
 />
