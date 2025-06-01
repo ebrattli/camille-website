@@ -13,10 +13,10 @@ const { siteTitle } = Astro.props;
 // Navigation links
 const navItems = [
   { text: "Home", href: "/" },
-  { text: "Services", href: "/services" },
-  { text: "Portfolio", href: "/portfolio" },
-  { text: "About", href: "/about" },
-  { text: "Contact", href: "/contact" },
+  { text: "Services", href: "/services/" },
+  { text: "Portfolio", href: "/portfolio/" },
+  { text: "About", href: "/about/" },
+  { text: "Contact", href: "/contact/" },
 ];
 ---
 
@@ -56,7 +56,7 @@ const navItems = [
   <div class="navbar-end">
     <!-- Call to action button -->
     <a
-      href="/contact"
+      href="/contact/"
       class="btn btn-primary btn-sm md:btn-md rounded-full px-4 font-medium shadow-md transition-all duration-200 hover:scale-105 hover:shadow-xl md:px-6"
     >
       Book Now

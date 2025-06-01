@@ -6,8 +6,8 @@
     "img-src": [],
     "connect-src": []
   },
-  "reportOnly": true,
+  "reportOnly": false,
   "reportUri": "",
   "excludePaths": [],
-  "enableHsts": false
+  "enableHsts": true
 }

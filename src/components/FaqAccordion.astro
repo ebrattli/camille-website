@@ -23,9 +23,11 @@ const { items, title, accordionName = "faq-accordion" } = Astro.props;
           <input
             type="radio"
             name={accordionName}
+            id={`${accordionName}-${index}`}
+            aria-labelledby={`${accordionName}-label-${index}`}
             checked={index === 0 ? "checked" : undefined}
           />
-          <div class="collapse-title font-semibold">{item.question}</div>
+          <div class="collapse-title font-semibold" id={`${accordionName}-label-${index}`}>{item.question}</div>
           <div class="collapse-content text-sm">
             <p>{item.answer}</p>
           </div>

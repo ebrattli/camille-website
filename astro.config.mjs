@@ -40,6 +40,10 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
+  trailingSlash: "always",
+  build: {
+    format: "directory",
+  },
 
   experimental: {
     clientPrerender: true,

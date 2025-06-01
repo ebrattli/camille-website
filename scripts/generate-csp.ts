@@ -121,8 +121,8 @@ async function generateCspHeaders(): Promise<void> {
   // Create the CSP directives object
   const cspDirectives: CspDirectives = {
     'default-src': ["'self'"],
-    'script-src': ["'self'", ...Array.from(scriptHashes)],
-    'style-src': ["'self'", ...Array.from(styleHashes)],
+    'script-src': ["'self'", "'unsafe-inline'", ...Array.from(scriptHashes)],
+    'style-src': ["'self'", "'unsafe-inline'", ...Array.from(styleHashes)],
     'img-src': ["'self'", "data:"],
     'font-src': ["'self'"],
     'connect-src': ["'self'"],
@@ -181,7 +181,7 @@ async function generateCspHeaders(): Promise<void> {
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
-${hstsHeader}  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+${hstsHeader}  Permissions-Policy: camera=(), microphone=(), geolocation=()
   Cross-Origin-Resource-Policy: same-origin
   Cross-Origin-Embedder-Policy: require-corp
   Cross-Origin-Opener-Policy: same-origin

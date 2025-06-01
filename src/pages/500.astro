@@ -9,11 +9,12 @@ interface Props {
 }
 
 const { error } = Astro.props;
-const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+const errorMessage =
+  error instanceof Error ? error.message : "An unexpected error occurred";
 
 const seo: SEOConfig = createLayoutProps("error", {
   title: "Server Error | Tarsier Digital",
-  description: "We've encountered an unexpected error. Please try again later."
+  description: "We've encountered an unexpected error. Please try again later.",
 });
 ---
 
@@ -26,28 +27,36 @@ const seo: SEOConfig = createLayoutProps("error", {
   structuredData={seo.structuredData}
   noindex={true}
 >
-  <div class="flex min-h-[60vh] flex-col items-center justify-center py-16 text-center">
-    <div class="mb-4 text-error">
+  <div
+    class="flex min-h-[60vh] flex-col items-center justify-center py-16 text-center"
+  >
+    <div class="text-error mb-4">
       <Icon name="mdi:server-off" class="size-24" />
     </div>
-    <h1 class="mb-4 text-4xl font-bold tracking-tight text-base-content md:text-5xl">
+    <h1
+      class="text-base-content mb-4 text-4xl font-bold tracking-tight md:text-5xl"
+    >
       500 - Server Error
     </h1>
-    <p class="mb-8 text-xl text-base-content/80">
+    <p class="text-base-content/80 mb-8 text-xl">
       We've encountered an unexpected error. Our team has been notified.
     </p>
-    {import.meta.env.DEV && error instanceof Error && (
-      <div class="mb-8 max-w-2xl rounded border border-error/20 bg-error/5 p-4 text-left">
-        <p class="mb-2 font-semibold">Error details (only visible in development):</p>
-        <p class="font-mono text-sm">{errorMessage}</p>
-      </div>
-    )}
+    {
+      import.meta.env.DEV && error instanceof Error && (
+        <div class="border-error/20 bg-error/5 mb-8 max-w-2xl rounded border p-4 text-left">
+          <p class="mb-2 font-semibold">
+            Error details (only visible in development):
+          </p>
+          <p class="font-mono text-sm">{errorMessage}</p>
+        </div>
+      )
+    }
     <div class="flex flex-col gap-4 sm:flex-row">
       <a href="/" class="btn btn-primary">
         <Icon name="mdi:home" class="mr-2 size-5" />
         Return Home
       </a>
-      <a href="/contact" class="btn btn-outline">
+      <a href="/contact/" class="btn btn-outline">
         <Icon name="mdi:message" class="mr-2 size-5" />
         Report This Issue
       </a>
