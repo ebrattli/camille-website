@@ -22,8 +22,6 @@
 - [x] Services page (completed)
 - [x] Portfolio page (completed)
 - [x] Contact page (completed)
-- [ ] Privacy Policy page (linked in footer but not implemented)
-- [ ] Terms of Service page (linked in footer but not implemented)
 - [ ] Create blog section structure and initial posts
 - [ ] Add team information section (if applicable)
 

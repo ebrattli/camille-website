@@ -1,0 +1,13 @@
+{
+  "additionalSources": {
+    "script-src": [],
+    "style-src": [],
+    "font-src": [],
+    "img-src": [],
+    "connect-src": []
+  },
+  "reportOnly": true,
+  "reportUri": "",
+  "excludePaths": [],
+  "enableHsts": false
+}

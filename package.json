@@ -4,13 +4,14 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && tsx scripts/generate-csp.ts",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "pnpm dlx eslint \"src/**/*.{js,ts,astro}\" ",
     "lint:fix": "pnpm dlx eslint \"src/**/*.{js,ts,astro}\" --fix",
     "format": "prettier --write \"src/**/*.{js,ts,astro,md,mdx,json,yaml,css}\"",
-    "format:check": "prettier --check \"src/**/*.{js,ts,astro,md,mdx,json,yaml,css}\""
+    "format:check": "prettier --check \"src/**/*.{js,ts,astro,md,mdx,json,yaml,css}\"",
+    "generate-csp": "tsx scripts/generate-csp.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -18,24 +19,28 @@
     "@astrojs/ts-plugin": "^1.10.4",
     "@iconify-json/mdi": "^1.2.3",
     "@playform/compress": "^0.1.9",
-    "@tailwindcss/vite": "^4.1.7",
-    "astro": "^5.8.0",
+    "@tailwindcss/vite": "^4.1.8",
+    "astro": "^5.8.1",
     "astro-icon": "^1.1.5",
-    "daisyui": "^5.0.37",
+    "daisyui": "^5.0.43",
     "sharp": "^0.34.2",
-    "tailwindcss": "^4.1.7"
+    "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
-    "@eslint/js": "^9.27.0",
-    "@typescript-eslint/parser": "^8.32.1",
-    "eslint": "^9.27.0",
+    "@eslint/js": "^9.28.0",
+    "@typescript-eslint/parser": "^8.33.0",
+    "eslint": "^9.28.0",
     "eslint-plugin-astro": "^1.3.1",
-    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-prettier": "^5.4.1",
+    "glob": "^10.4.5",
     "globals": "^16.2.0",
+    "node-html-parser": "^6.1.13",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prettier-plugin-tailwindcss": "^0.6.12",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.1"
+    "typescript-eslint": "^8.33.0",
+    "wrangler": "^4.18.0"
   }
 }
